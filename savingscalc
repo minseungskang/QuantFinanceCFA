@@ -1,0 +1,20 @@
+import numpy_financial as npf
+import math
+# early access account  
+# regular savings account
+# regular payment??? add option later maybe
+# but for now just calculate the interest gained on a single month deposit
+monthdeposit = float(input("How much do you want to deposit this month? "))
+time = int(input("How many months do you want to save for? "))
+rate = 0.07
+total = npf.fv(rate, time, -monthdeposit, 0)
+bavg = total / 12
+strbavg = str(bavg)
+avgnum = strbavg[strbavg.find(".")+2:strbavg.find(".")+3]
+if(int(avgnum)%2 == 1):
+    avg = round(bavg, 1)
+else:
+    avg = math.ceil(bavg, 2)
+interestgained = avg * rate
+print("You have deposited " + str(monthdeposit) + " this month.")
+print("You have gained " + str(interestgained) + " GBP in interest this month.")
