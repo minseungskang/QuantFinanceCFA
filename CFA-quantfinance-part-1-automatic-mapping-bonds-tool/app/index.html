@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sovereign Bond Screening Tool</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <section>
+          <p class="eyebrow">Transparent Scoring Model</p>
+          <h1>Sovereign Bond Screening Tool</h1>
+        </section>
+        <section class="topbar-actions" aria-label="App status and actions">
+          <aside class="online-stat" aria-label="Current online sessions">
+            <span>Online Now</span>
+            <strong id="onlineCount">1</strong>
+            <small>Local preview session</small>
+          </aside>
+          <input id="csvImportInput" type="file" accept=".csv,text/csv" hidden />
+          <button id="importCsv" type="button">Import CSV</button>
+          <button id="exportCsv" type="button">Export CSV</button>
+          <button id="resetLocalData" type="button">Reset Local Data</button>
+        </section>
+      </header>
+
+      <section class="controls" aria-label="Table controls">
+        <label>
+          Search
+          <input id="searchInput" type="search" placeholder="Country, currency, rating..." />
+        </label>
+        <label>
+          Region
+          <select id="regionFilter">
+            <option value="all">All regions</option>
+            <option value="Europe">Europe</option>
+            <option value="Asia">Asia</option>
+            <option value="Americas">Americas</option>
+            <option value="Middle East">Middle East</option>
+          </select>
+        </label>
+        <label>
+          Sort
+          <select id="sortMode">
+            <option value="score-desc">Score high to low</option>
+            <option value="score-asc">Score low to high</option>
+            <option value="az">Country A-Z</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="summary-grid" aria-label="Model summary">
+        <article>
+          <span>Category Weight</span>
+          <strong>35% / 65%</strong>
+          <small>Return & Liquidity / Sovereign Risk</small>
+        </article>
+        <article>
+          <span>Records</span>
+          <strong id="visibleCount">0</strong>
+          <small>Visible sample countries</small>
+        </article>
+        <article>
+          <span>Local Data</span>
+          <strong id="saveState">Ready</strong>
+          <small id="saveStatus">Manual edits save in this browser</small>
+        </article>
+      </section>
+
+      <section class="hidden-panel" aria-label="Hidden countries">
+        <header>
+          <section>
+            <span>Hidden Countries</span>
+            <strong id="hiddenCount">0</strong>
+          </section>
+          <small>Hidden records do not participate in the visible ranking.</small>
+        </header>
+        <div id="hiddenList" class="hidden-list"></div>
+      </section>
+
+      <section class="table-panel" aria-label="Sovereign bond ranking table">
+        <table>
+          <colgroup>
+            <col class="rank-col" />
+            <col class="actions-col" />
+            <col class="country-col" />
+            <col class="pin-col" />
+            <col class="region-col" />
+            <col class="currency-col" />
+            <col class="ytm-col" />
+            <col class="rating-col" />
+            <col class="score-col" />
+            <col class="confidence-col" />
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Rank</th>
+              <th>Actions</th>
+              <th>Country</th>
+              <th>Pin</th>
+              <th>Region</th>
+              <th>Currency</th>
+              <th>YTM</th>
+              <th>Rating</th>
+              <th>Total Score</th>
+              <th>Confidence</th>
+            </tr>
+          </thead>
+          <tbody id="bondRows"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <section class="modal-backdrop" id="editModal" hidden>
+      <form class="edit-panel" id="editForm">
+        <header>
+          <section>
+            <p class="eyebrow">Manual Data Update</p>
+            <h2 id="editTitle">Edit Country</h2>
+          </section>
+          <button class="icon-button" id="closeEdit" type="button" aria-label="Close edit form">Close</button>
+        </header>
+
+        <input id="editCountry" name="country" type="hidden" />
+
+        <div class="edit-grid">
+          <label>Yield to Maturity (%)<input id="editYieldToMaturity" name="yieldToMaturity" type="number" step="0.01" /></label>
+          <label>Bond Price<input id="editBondPrice" name="bondPrice" type="number" step="0.01" /></label>
+          <label>Coupon Rate (%)<input id="editCouponRate" name="couponRate" type="number" step="0.01" /></label>
+          <label>
+            Credit Rating
+            <select id="editCreditRating" name="creditRating">
+              <option>AAA</option><option>AA+</option><option>AA</option><option>AA-</option>
+              <option>A+</option><option>A</option><option>A-</option>
+              <option>BBB+</option><option>BBB</option><option>BBB-</option>
+              <option>BB+</option><option>BB</option><option>BB-</option>
+              <option>B+</option><option>B</option><option>B-</option>
+              <option>CCC+</option><option>CCC</option><option>CCC-</option>
+              <option>CC</option><option>C</option><option>D</option>
+            </select>
+          </label>
+          <label>Debt-to-GDP (%)<input id="editDebtToGdp" name="debtToGdp" type="number" step="0.01" /></label>
+          <label>Fiscal Deficit-to-GDP (%)<input id="editFiscalDeficitToGdp" name="fiscalDeficitToGdp" type="number" step="0.01" /></label>
+          <label>Inflation Rate (%)<input id="editInflationRate" name="inflationRate" type="number" step="0.01" /></label>
+          <label>Policy Interest Rate (%)<input id="editPolicyInterestRate" name="policyInterestRate" type="number" step="0.01" /></label>
+          <label>Exchange Rate Volatility (%)<input id="editExchangeRateVolatility" name="exchangeRateVolatility" type="number" step="0.01" /></label>
+          <label>FX Reserves (USD bn)<input id="editForeignExchangeReserves" name="foreignExchangeReserves" type="number" step="0.01" /></label>
+          <label>Gold Reserves (tonnes)<input id="editGoldReserves" name="goldReserves" type="number" step="0.01" /></label>
+          <label>CDS Spread (bps)<input id="editCdsSpread" name="cdsSpread" type="number" step="0.01" /></label>
+          <label>Bid-Ask Spread (%)<input id="editLiquidityBidAskSpread" name="liquidityBidAskSpread" type="number" step="0.01" /></label>
+          <label>Source Note<input id="editSourceNote" name="sourceNote" type="text" placeholder="Manual update note" /></label>
+        </div>
+
+        <footer>
+          <button class="secondary-button" id="cancelEdit" type="button">Cancel</button>
+          <button id="saveEdit" type="submit">Save & Recalculate</button>
+        </footer>
+      </form>
+    </section>
+
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>

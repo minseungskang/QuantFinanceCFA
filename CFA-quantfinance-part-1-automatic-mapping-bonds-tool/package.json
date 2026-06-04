@@ -1,0 +1,16 @@
+{
+  "name": "sovereign-bond-screening-tool",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Mac-first sovereign bond screening desktop app scaffold.",
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/dev-server.mjs",
+    "check": "node scripts/check-files.mjs",
+    "test": "node scripts/test-scoring.mjs",
+    "generate-data": "node scripts/generate-country-data.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
