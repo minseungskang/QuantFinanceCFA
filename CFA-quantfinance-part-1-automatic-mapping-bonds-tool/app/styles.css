@@ -12,6 +12,7 @@
 body {
   margin: 0;
   min-width: 1080px;
+  overflow: hidden;
 }
 
 button,
@@ -21,8 +22,11 @@ select {
 }
 
 .app-shell {
-  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   padding: 28px;
+  overflow: hidden;
 }
 
 .topbar {
@@ -137,7 +141,7 @@ select {
 
 .summary-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 14px;
   margin-bottom: 18px;
 }
@@ -162,7 +166,9 @@ select {
 }
 
 .table-panel {
-  overflow: hidden;
+  flex: 1;
+  min-height: 260px;
+  overflow: auto;
   border: 1px solid #d7e7f4;
   border-radius: 8px;
   background: #ffffff;
@@ -170,6 +176,7 @@ select {
 
 table {
   width: 100%;
+  min-width: 1500px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -214,11 +221,33 @@ td {
 }
 
 th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   color: #52657d;
   background: #eef6fc;
   font-size: 12px;
   font-weight: 760;
   text-transform: uppercase;
+}
+
+.info-tip {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 17px;
+  height: 17px;
+  margin-left: 6px;
+  border: 1px solid #b8d5e9;
+  border-radius: 999px;
+  color: #126497;
+  background: #ffffff;
+  font-size: 11px;
+  font-weight: 760;
+  line-height: 1;
+  text-transform: none;
+  cursor: help;
 }
 
 td {
@@ -438,6 +467,7 @@ tr:last-child td {
 }
 
 .hidden-panel {
+  flex: 0 0 auto;
   border: 1px solid #d7e7f4;
   border-radius: 8px;
   padding: 14px;

@@ -216,7 +216,7 @@ function renderDetailRow(row) {
             <article>
               <span>Total Score</span>
               <strong>${row.totalScore.toFixed(1)} / 100</strong>
-              <small>Data confidence: ${row.dataConfidence.toFixed(1)}%</small>
+              <small>Data completeness: ${row.dataConfidence.toFixed(1)}%</small>
             </article>
           </div>
           <div class="component-grid">
@@ -548,7 +548,7 @@ function exportVisibleCsv() {
     { key: "rank", label: "Rank" },
     ...csvColumnDefinitions,
     { key: "totalScore", label: "Total Score (0-100)" },
-    { key: "dataConfidence", label: "Data Confidence (%)" },
+    { key: "dataConfidence", label: "Data Completeness (%)" },
     { key: "realYield", label: "Real Yield (%)" }
   ];
   const csvRows = [

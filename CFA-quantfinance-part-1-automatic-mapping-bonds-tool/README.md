@@ -2,6 +2,34 @@
 
 Mac-first sovereign bond screening app prototype.
 
+## How to Run Demo
+
+Option 1: double-click:
+
+```text
+Start Demo.command
+```
+
+Option 2: open this project folder in VS Code, then run:
+
+```bash
+/Users/felixmac/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node scripts/dev-server.mjs
+```
+
+Open the demo at:
+
+```text
+http://127.0.0.1:4173
+```
+
+To stop the demo, press:
+
+```text
+Control + C
+```
+
+If the terminal shows `EADDRINUSE` or `port: 4173`, the demo is already running. Open `http://127.0.0.1:4173` directly in Chrome or Safari.
+
 ## Current Status
 
 This repository currently contains the project governance docs and a dependency-free runnable preview shell.
@@ -55,9 +83,12 @@ The preview includes:
 - Browser-local persistence for manual edits and pin state
 - Reset Local Data control for restoring sample records in the current browser
 - Hide and restore workflow for countries removed from the visible ranking
+- Scrollable ranking table so lower rows and right-side columns remain accessible during demos
 - CSV export for the current visible ranking
 - CSV import for replacing the local dataset
 - CSV headers include human-readable names and units, such as `Debt-to-GDP (%)` and `CDS Spread (bps)`
+
+Note: the table's Completeness value means the fields needed by the scoring model are present. It is not a guarantee that every sample value is market-source verified.
 
 ## Next Development Step
 
