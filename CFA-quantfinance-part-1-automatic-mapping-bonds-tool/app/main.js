@@ -68,8 +68,6 @@ const resetLocalData = document.querySelector("#resetLocalData");
 const importCsv = document.querySelector("#importCsv");
 const exportCsv = document.querySelector("#exportCsv");
 const csvImportInput = document.querySelector("#csvImportInput");
-const gradeFilterButtons = document.querySelectorAll(".grade-filter-button");
-let selectedGrade = "A";
 const saveState = document.querySelector("#saveState");
 const saveStatus = document.querySelector("#saveStatus");
 const editModal = document.querySelector("#editModal");
@@ -122,14 +120,8 @@ function getVisibleRows() {
     .filter((row) => {
       if (hiddenCountries.has(row.country)) return false;
       const matchesRegion = region === "all" || row.region === region;
-      const matchesGrade =
-        selectedGrade === "A"
-          ? ["AAA", "AA", "A"].includes(row.rating || row.creditRating)
-          : selectedGrade === "B"
-          ? ["BBB", "BB", "B"].includes(row.rating || row.creditRating)
-          : ["CCC", "CC", "C"].includes(row.rating || row.creditRating);
       const searchText = `${row.country} ${row.region} ${row.currency} ${row.creditRating} ${row.rating || ""}`.toLowerCase();
-      return matchesRegion && matchesGrade && searchText.includes(query);
+      return matchesRegion && searchText.includes(query);
     });
 
   return sortRows(filteredRows, sort);
@@ -341,23 +333,6 @@ tableBody.addEventListener("click", (event) => {
   expandedCountry = expandedCountry === country ? null : country;
   renderTable();
 });
-gradeFilterButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    selectedGrade = button.dataset.grade;
-    gradeFilterButtons.forEach((btn) => {
-      btn.classList.toggle("is-active", btn.dataset.grade === selectedGrade);
-    });
-    renderTable();
-  });
-});
-
-function initializeGradeFilter() {
-  gradeFilterButtons.forEach((button) => {
-    button.classList.toggle("is-active", button.dataset.grade === selectedGrade);
-  });
-}
-
-initializeGradeFilter();
 resetLocalData.addEventListener("click", resetLocalRecords);
 exportCsv.addEventListener("click", exportVisibleCsv);
 importCsv.addEventListener("click", () => csvImportInput.click());

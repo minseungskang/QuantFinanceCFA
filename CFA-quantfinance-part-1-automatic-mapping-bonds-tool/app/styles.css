@@ -191,41 +191,6 @@ select {
   background: #9fb1c3;
 }
 
-.grade-filter-bar {
-  position: sticky;
-  left: 0;
-  z-index: 4;
-  display: inline-flex;
-  gap: 8px;
-  padding: 12px 14px 10px;
-  background: #ffffff;
-}
-
-.grade-filter-button {
-  min-height: 34px;
-  border: 1px solid #c8dfef;
-  border-radius: 8px;
-  padding: 0 14px;
-  color: #52657d;
-  background: #ffffff;
-  font-size: 13px;
-  font-weight: 760;
-  cursor: pointer;
-}
-
-.grade-filter-button:hover,
-.grade-filter-button:focus-visible {
-  color: #126497;
-  border-color: #9ec8e5;
-  background: #f0f8fd;
-}
-
-.grade-filter-button.is-active {
-  color: #ffffff;
-  border-color: #1677b8;
-  background: #1677b8;
-}
-
 table {
   width: 100%;
   min-width: 1500px;
