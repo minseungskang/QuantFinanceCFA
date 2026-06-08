@@ -273,36 +273,6 @@ function scoreCategory(record, category, ranges, weights = DEFAULT_WEIGHTS) {
   };
 }
 
-function assignRatingByBand(records) {
-  for (const record of records) {
-    if (!isUsableNumber(record.totalScore)) {
-      record.rating = null;
-      continue;
-    }
-
-    const score = record.totalScore;
-    if (score >= 90) {
-      record.rating = "AAA";
-    } else if (score >= 80) {
-      record.rating = "AA";
-    } else if (score >= 70) {
-      record.rating = "A";
-    } else if (score >= 60) {
-      record.rating = "BBB";
-    } else if (score >= 50) {
-      record.rating = "BB";
-    } else if (score >= 40) {
-      record.rating = "B";
-    } else if (score >= 30) {
-      record.rating = "CCC";
-    } else if (score >= 20) {
-      record.rating = "CC";
-    } else {
-      record.rating = "C";
-    }
-  }
-}
-
 export function scoreRecords(records, weights = DEFAULT_WEIGHTS) {
   const ranges = buildRanges(records);
 
@@ -386,6 +356,5 @@ export function scoreRecords(records, weights = DEFAULT_WEIGHTS) {
     };
   });
 
-  assignRatingByBand(final);
   return final;
 }

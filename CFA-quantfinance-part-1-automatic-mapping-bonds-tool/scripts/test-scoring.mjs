@@ -101,6 +101,7 @@ const gamma = scored.find((record) => record.country === "Gamma Risk");
 assert.ok(alpha);
 assert.ok(gamma);
 assert.equal(alpha.realYield, 1);
+assert.equal(alpha.rating, undefined);
 assert.equal(alpha.dataConfidence, 100);
 assert.equal(alpha.scoreBreakdown.sovereignRisk.components.creditRating.normalized, 100);
 assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.weight, 0);

@@ -184,7 +184,7 @@ function getVisibleRows() {
       const rowBondType = normalizeBondType(row.bondType);
       const matchesBondType = bondType === "all" || rowBondType === bondType;
       const matchesRegion = region === "all" || row.region === region;
-      const searchText = `${row.country} ${row.region} ${row.currency} ${getBondTypeLabel(rowBondType)} ${row.creditRating} ${row.rating || ""}`.toLowerCase();
+      const searchText = `${row.country} ${row.region} ${row.currency} ${getBondTypeLabel(rowBondType)} ${row.creditRating}`.toLowerCase();
       return matchesBondType && matchesRegion && searchText.includes(query);
     });
 
@@ -241,7 +241,7 @@ function renderRows(rows) {
           <td>${row.region}</td>
           <td>${row.currency}</td>
           <td>${row.yieldToMaturity.toFixed(2)}%</td>
-          <td><span class="rating">${row.rating || row.creditRating}</span></td>
+          <td><span class="rating">${row.creditRating}</span></td>
           <td class="score">${row.totalScore.toFixed(1)}</td>
           <td>${row.dataConfidence.toFixed(1)}%</td>
         </tr>
@@ -267,11 +267,6 @@ function renderDetailRow(row) {
               <span>Raw Credit Rating</span>
               <strong>${row.creditRating}</strong>
               <small>Mapped score: ${formatScore(creditRating.normalized)} / 100</small>
-            </article>
-            <article>
-              <span>Rating Band</span>
-              <strong>${row.rating || "N/A"}</strong>
-              <small>Based on rank percentile</small>
             </article>
             <article>
               <span>Bond Return & Liquidity</span>
