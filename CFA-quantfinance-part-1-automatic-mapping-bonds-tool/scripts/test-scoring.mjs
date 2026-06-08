@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { scoreRecords, CREDIT_RATING_SCORES } from "../app/scoring.js";
+import { scoreRecords, CREDIT_RATING_SCORES, DEFAULT_WEIGHTS } from "../app/scoring.js";
 import { sampleRecords } from "../app/sample-data.js";
 
 const fixtureRecords = [
@@ -69,6 +69,12 @@ const scored = scoreRecords(fixtureRecords);
 
 assert.equal(CREDIT_RATING_SCORES.AAA, 100);
 assert.equal(CREDIT_RATING_SCORES.D, 0);
+assert.equal(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.yieldToMaturity, 0);
+assert.equal(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.realYield, 0.5);
+assert.equal(roundForTest(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.liquidityBidAskSpread), 0.3333);
+assert.equal(roundForTest(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.bondPriceDiscount), 0.1667);
+assert.equal(DEFAULT_WEIGHTS.indicators.sovereignRisk.inflationRate, 0);
+assert.equal(roundForTest(DEFAULT_WEIGHTS.indicators.sovereignRisk.creditRating), 0.3111);
 assert.equal(scored.length, fixtureRecords.length);
 assert.ok(sampleRecords.length >= 100);
 
@@ -85,6 +91,11 @@ assert.ok(gamma);
 assert.equal(alpha.realYield, 1);
 assert.equal(alpha.dataConfidence, 100);
 assert.equal(alpha.scoreBreakdown.sovereignRisk.components.creditRating.normalized, 100);
+assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.weight, 0);
+assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.rawValue, 3);
+assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.realYield.weight, 0.5);
+assert.equal(alpha.scoreBreakdown.sovereignRisk.components.inflationRate.weight, 0);
+assert.equal(alpha.scoreBreakdown.sovereignRisk.components.inflationRate.rawValue, 2);
 assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.benchmark.method, "winsorized-min-max");
 assert.ok(
   alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.benchmark.hundredScoreValue >
@@ -117,3 +128,7 @@ const sorted = [...scored].sort((a, b) => b.totalScore - a.totalScore);
 assert.equal(sorted[0].country, "Alpha Safe");
 
 console.log("Scoring tests passed.");
+
+function roundForTest(value) {
+  return Math.round(value * 10000) / 10000;
+}

@@ -15,45 +15,55 @@ Total Score = weighted Bond Return & Liquidity score + weighted Sovereign Risk s
 
 Within the 35% category:
 
-- Yield to Maturity: 40%
-- Real Yield: 30%
-- Liquidity / Bid-Ask Spread: 20%
-- Bond Price / Discount: 10%
+- Yield to Maturity: 0% scoring weight; shown as a raw reference field only
+- Real Yield: 50%
+- Liquidity / Bid-Ask Spread: 33.33%
+- Bond Price / Discount: 16.67%
 
 Real Yield = Yield to Maturity - Inflation Rate.
+
+This avoids double counting nominal yield. The model scores inflation-adjusted return through Real Yield, while keeping YTM visible for auditability.
 
 ## Sovereign Risk Weights
 
 Within the 65% category:
 
-- Credit Rating: 28%
-- CDS Spread: 16%
-- Debt-to-GDP: 14%
-- Fiscal Deficit-to-GDP: 12%
-- Inflation Rate: 10%
-- Exchange Rate Volatility: 9%
-- Foreign Exchange Reserves: 8%
-- Policy Interest Rate: 2%
-- Gold Reserves: 1%
+- Credit Rating: 31.11%
+- CDS Spread: 17.78%
+- Debt-to-GDP: 15.56%
+- Fiscal Deficit-to-GDP: 13.33%
+- Inflation Rate: 0% scoring weight; shown as a raw input to Real Yield only
+- Exchange Rate Volatility: 10.00%
+- Foreign Exchange Reserves: 8.89%
+- Policy Interest Rate: 2.22%
+- Gold Reserves: 1.11%
+
+Inflation Rate is not separately scored in the Sovereign Risk category in this pass because it already affects Real Yield. A future model can add inflation stability or central-bank credibility as separate risk indicators when those fields exist.
 
 ## Indicator Direction
 
 Higher is better:
 
-- Yield to Maturity
 - Real Yield
 - Foreign Exchange Reserves
 - Gold Reserves
+
+Shown as reference only in the current scoring pass:
+
+- Yield to Maturity
 
 Lower is better:
 
 - Debt-to-GDP
 - Fiscal Deficit-to-GDP
-- Inflation Rate
 - Policy Interest Rate
 - Exchange Rate Volatility
 - CDS Spread
 - Liquidity / Bid-Ask Spread
+
+Used as an input to Real Yield, but not separately scored in the current scoring pass:
+
+- Inflation Rate
 
 Mapped by rating quality:
 

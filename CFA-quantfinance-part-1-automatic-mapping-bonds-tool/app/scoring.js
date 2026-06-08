@@ -5,21 +5,21 @@ export const DEFAULT_WEIGHTS = {
   },
   indicators: {
     bondReturnLiquidity: {
-      yieldToMaturity: 0.4,
-      realYield: 0.3,
-      liquidityBidAskSpread: 0.2,
-      bondPriceDiscount: 0.1
+      yieldToMaturity: 0,
+      realYield: 0.5,
+      liquidityBidAskSpread: 0.3333333333,
+      bondPriceDiscount: 0.1666666667
     },
     sovereignRisk: {
-      creditRating: 0.28,
-      cdsSpread: 0.16,
-      debtToGdp: 0.14,
-      fiscalDeficitToGdp: 0.12,
-      inflationRate: 0.1,
-      exchangeRateVolatility: 0.09,
-      foreignExchangeReserves: 0.08,
-      policyInterestRate: 0.02,
-      goldReserves: 0.01
+      creditRating: 0.3111111111,
+      cdsSpread: 0.1777777778,
+      debtToGdp: 0.1555555556,
+      fiscalDeficitToGdp: 0.1333333333,
+      inflationRate: 0,
+      exchangeRateVolatility: 0.1,
+      foreignExchangeReserves: 0.0888888889,
+      policyInterestRate: 0.0222222222,
+      goldReserves: 0.0111111111
     }
   }
 };
@@ -214,10 +214,40 @@ function scoreCategory(record, category, ranges, weights = DEFAULT_WEIGHTS) {
   };
 }
 
+function assignRatingByBand(records) {
+  for (const record of records) {
+    if (!isUsableNumber(record.totalScore)) {
+      record.rating = null;
+      continue;
+    }
+
+    const score = record.totalScore;
+    if (score >= 90) {
+      record.rating = "AAA";
+    } else if (score >= 80) {
+      record.rating = "AA";
+    } else if (score >= 70) {
+      record.rating = "A";
+    } else if (score >= 60) {
+      record.rating = "BBB";
+    } else if (score >= 50) {
+      record.rating = "BB";
+    } else if (score >= 40) {
+      record.rating = "B";
+    } else if (score >= 30) {
+      record.rating = "CCC";
+    } else if (score >= 20) {
+      record.rating = "CC";
+    } else {
+      record.rating = "C";
+    }
+  }
+}
+
 export function scoreRecords(records, weights = DEFAULT_WEIGHTS) {
   const ranges = buildRanges(records);
 
-  return records.map((record) => {
+  const scored = records.map((record) => {
     const bondCategory = scoreCategory(record, "bondReturnLiquidity", ranges, weights);
     const riskCategory = scoreCategory(record, "sovereignRisk", ranges, weights);
 
@@ -245,12 +275,13 @@ export function scoreRecords(records, weights = DEFAULT_WEIGHTS) {
       usedModelWeight += item.weight * item.result.usedWeight;
     }
 
-    const totalScore = usedCategoryWeight > 0 ? totalWeightedScore / usedCategoryWeight : null;
+    const weightedScore = usedCategoryWeight > 0 ? totalWeightedScore / usedCategoryWeight : null;
 
     return {
       ...record,
       realYield: getRealYield(record),
-      totalScore: totalScore === null ? null : round(totalScore),
+      weightedScore: weightedScore === null ? null : round(weightedScore, 4),
+      totalScore: weightedScore === null ? null : weightedScore,
       dataConfidence: round(usedModelWeight * 100),
       scoreBreakdown: {
         bondReturnLiquidity: {
@@ -264,4 +295,38 @@ export function scoreRecords(records, weights = DEFAULT_WEIGHTS) {
       }
     };
   });
+
+  const scoredWithWeights = scored.filter((record) => isUsableNumber(record.weightedScore));
+  const availableWeightedScores = scoredWithWeights.map((record) => record.weightedScore);
+  const meanWeightedScore =
+    availableWeightedScores.length > 0
+      ? availableWeightedScores.reduce((sum, value) => sum + value, 0) / availableWeightedScores.length
+      : null;
+  const variance =
+    availableWeightedScores.length > 0
+      ? availableWeightedScores.reduce((sum, value) => sum + (value - meanWeightedScore) ** 2, 0) /
+        availableWeightedScores.length
+      : null;
+  const standardDeviation = variance !== null ? Math.sqrt(variance) : null;
+
+  const final = scored.map((record) => {
+    let finalScore = null;
+    if (
+      isUsableNumber(record.weightedScore) &&
+      isUsableNumber(meanWeightedScore) &&
+      isUsableNumber(standardDeviation) &&
+      standardDeviation > 0
+    ) {
+      const z = (record.weightedScore - meanWeightedScore) / standardDeviation;
+      finalScore = 100 / (1 + Math.exp(-z));
+    }
+
+    return {
+      ...record,
+      totalScore: finalScore === null ? null : round(finalScore)
+    };
+  });
+
+  assignRatingByBand(final);
+  return final;
 }

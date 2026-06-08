@@ -68,6 +68,8 @@ const resetLocalData = document.querySelector("#resetLocalData");
 const importCsv = document.querySelector("#importCsv");
 const exportCsv = document.querySelector("#exportCsv");
 const csvImportInput = document.querySelector("#csvImportInput");
+const gradeFilterButtons = document.querySelectorAll(".grade-filter-button");
+let selectedGrade = "A";
 const saveState = document.querySelector("#saveState");
 const saveStatus = document.querySelector("#saveStatus");
 const editModal = document.querySelector("#editModal");
@@ -120,8 +122,14 @@ function getVisibleRows() {
     .filter((row) => {
       if (hiddenCountries.has(row.country)) return false;
       const matchesRegion = region === "all" || row.region === region;
-      const searchText = `${row.country} ${row.region} ${row.currency} ${row.creditRating}`.toLowerCase();
-      return matchesRegion && searchText.includes(query);
+      const matchesGrade =
+        selectedGrade === "A"
+          ? ["AAA", "AA", "A"].includes(row.rating || row.creditRating)
+          : selectedGrade === "B"
+          ? ["BBB", "BB", "B"].includes(row.rating || row.creditRating)
+          : ["CCC", "CC", "C"].includes(row.rating || row.creditRating);
+      const searchText = `${row.country} ${row.region} ${row.currency} ${row.creditRating} ${row.rating || ""}`.toLowerCase();
+      return matchesRegion && matchesGrade && searchText.includes(query);
     });
 
   return sortRows(filteredRows, sort);
@@ -176,7 +184,7 @@ function renderRows(rows) {
           <td>${row.region}</td>
           <td>${row.currency}</td>
           <td>${row.yieldToMaturity.toFixed(2)}%</td>
-          <td><span class="rating">${row.creditRating}</span></td>
+          <td><span class="rating">${row.rating || row.creditRating}</span></td>
           <td class="score">${row.totalScore.toFixed(1)}</td>
           <td>${row.dataConfidence.toFixed(1)}%</td>
         </tr>
@@ -199,9 +207,14 @@ function renderDetailRow(row) {
         <section class="detail-panel" aria-label="${row.country} score details">
           <div class="detail-summary">
             <article>
-              <span>Credit Rating</span>
+              <span>Raw Credit Rating</span>
               <strong>${row.creditRating}</strong>
               <small>Mapped score: ${formatScore(creditRating.normalized)} / 100</small>
+            </article>
+            <article>
+              <span>Rating Band</span>
+              <strong>${row.rating || "N/A"}</strong>
+              <small>Based on rank percentile</small>
             </article>
             <article>
               <span>Bond Return & Liquidity</span>
@@ -321,6 +334,23 @@ tableBody.addEventListener("click", (event) => {
   expandedCountry = expandedCountry === country ? null : country;
   renderTable();
 });
+gradeFilterButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    selectedGrade = button.dataset.grade;
+    gradeFilterButtons.forEach((btn) => {
+      btn.classList.toggle("is-active", btn.dataset.grade === selectedGrade);
+    });
+    renderTable();
+  });
+});
+
+function initializeGradeFilter() {
+  gradeFilterButtons.forEach((button) => {
+    button.classList.toggle("is-active", button.dataset.grade === selectedGrade);
+  });
+}
+
+initializeGradeFilter();
 resetLocalData.addEventListener("click", resetLocalRecords);
 exportCsv.addEventListener("click", exportVisibleCsv);
 importCsv.addEventListener("click", () => csvImportInput.click());
