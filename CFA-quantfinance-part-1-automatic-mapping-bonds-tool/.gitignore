@@ -6,4 +6,4 @@ out/
 .cache/
 coverage/
 *.log
-
+*.lnk
