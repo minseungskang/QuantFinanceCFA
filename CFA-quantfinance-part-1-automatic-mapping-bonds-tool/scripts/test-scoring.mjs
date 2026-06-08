@@ -90,6 +90,13 @@ assert.deepEqual(
 assert.equal(scored.length, fixtureRecords.length);
 assert.ok(sampleRecords.length >= 100);
 
+for (const country of ["China", "South Korea", "India", "Indonesia", "Thailand"]) {
+  const sample = sampleRecords.find((record) => record.country === country);
+  assert.ok(sample, `${country} should exist in sample records`);
+  assert.equal(sample.yieldToMaturity, 5.61);
+  assert.equal(sample.creditRating, "A+");
+}
+
 for (const record of scored) {
   assert.equal(typeof record.totalScore, "number");
   assert.ok(record.totalScore >= 0 && record.totalScore <= 100);

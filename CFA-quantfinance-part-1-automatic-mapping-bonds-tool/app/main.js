@@ -240,7 +240,17 @@ function renderRows(rows) {
           </td>
           <td>${row.region}</td>
           <td>${row.currency}</td>
-          <td>${row.yieldToMaturity.toFixed(2)}%</td>
+          <td>
+            <input
+              class="ytm-input"
+              type="number"
+              step="0.01"
+              inputmode="decimal"
+              aria-label="Yield to Maturity for ${row.country}"
+              data-country="${row.country}"
+              value="${formatEditableNumber(row.yieldToMaturity)}"
+            />
+          </td>
           <td><span class="rating">${row.creditRating}</span></td>
           <td class="score">${row.totalScore.toFixed(1)}</td>
           <td>${row.dataConfidence.toFixed(1)}%</td>
@@ -393,6 +403,17 @@ tableBody.addEventListener("click", (event) => {
   const country = toggle.dataset.country;
   expandedCountry = expandedCountry === country ? null : country;
   renderTable();
+});
+tableBody.addEventListener("change", (event) => {
+  const input = event.target.closest(".ytm-input");
+  if (!input) return;
+  saveInlineYtm(input.dataset.country, input.value);
+});
+tableBody.addEventListener("keydown", (event) => {
+  const input = event.target.closest(".ytm-input");
+  if (!input || event.key !== "Enter") return;
+  event.preventDefault();
+  input.blur();
 });
 resetLocalData.addEventListener("click", resetLocalRecords);
 exportCsv.addEventListener("click", exportVisibleCsv);
@@ -582,6 +603,26 @@ function updateSaveStatus(message = "Manual edits save in this browser") {
   saveStatus.textContent = message;
 }
 
+function saveInlineYtm(country, value) {
+  const parsed = parseNullableNumber(value);
+  const recordIndex = records.findIndex((item) => item.country === country);
+  if (recordIndex === -1) return;
+
+  records = records.map((record, index) =>
+    index === recordIndex
+      ? {
+          ...record,
+          yieldToMaturity: parsed,
+          lastUpdated: new Date().toISOString()
+        }
+      : record
+  );
+  scoredRows = scoreRecords(records);
+  saveRecords();
+  updateSaveStatus(`${country} YTM saved locally`);
+  renderTable();
+}
+
 function openEditForm(country) {
   const record = records.find((item) => item.country === country);
   if (!record) return;
@@ -634,6 +675,10 @@ function parseNullableNumber(value) {
   if (value === "") return null;
   const parsed = Number(value);
   return Number.isFinite(parsed) ? parsed : null;
+}
+
+function formatEditableNumber(value) {
+  return Number.isFinite(value) ? value.toFixed(2) : "";
 }
 
 function exportVisibleCsv() {
