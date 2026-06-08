@@ -115,7 +115,7 @@ h1 {
 
 .controls {
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
+  grid-template-columns: 1.45fr 0.9fr 0.9fr 1fr;
   gap: 14px;
   margin-bottom: 18px;
 }
@@ -193,7 +193,7 @@ select {
 
 table {
   width: 100%;
-  min-width: 1500px;
+  min-width: 1660px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -208,6 +208,10 @@ table {
 
 .country-col {
   width: 240px;
+}
+
+.bond-type-col {
+  width: 170px;
 }
 
 .pin-col {

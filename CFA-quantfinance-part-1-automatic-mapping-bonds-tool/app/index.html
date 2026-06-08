@@ -32,6 +32,14 @@
           <input id="searchInput" type="search" placeholder="Country, currency, rating..." />
         </label>
         <label>
+          Bond Type
+          <select id="bondTypeFilter">
+            <option value="all">All types</option>
+            <option value="localCurrency">Local Currency</option>
+            <option value="eurobond">Eurobond</option>
+          </select>
+        </label>
+        <label>
           Region
           <select id="regionFilter">
             <option value="all">All regions</option>
@@ -91,6 +99,7 @@
             <col class="rank-col" />
             <col class="actions-col" />
             <col class="country-col" />
+            <col class="bond-type-col" />
             <col class="pin-col" />
             <col class="region-col" />
             <col class="currency-col" />
@@ -104,6 +113,10 @@
               <th>Rank</th>
               <th>Actions</th>
               <th>Country</th>
+              <th>
+                Bond Type
+                <span class="info-tip" tabindex="0" data-tooltip="Local Currency means the bond is issued in the government's own currency. Eurobond means an external or foreign-currency sovereign bond." aria-label="Local Currency means the bond is issued in the government's own currency. Eurobond means an external or foreign-currency sovereign bond.">i</span>
+              </th>
               <th>Pin</th>
               <th>Region</th>
               <th>Currency</th>
@@ -140,6 +153,13 @@
         <input id="editCountry" name="country" type="hidden" />
 
         <div class="edit-grid">
+          <label>
+            Bond Type
+            <select id="editBondType" name="bondType">
+              <option value="localCurrency">Local Currency</option>
+              <option value="eurobond">Eurobond</option>
+            </select>
+          </label>
           <label>Yield to Maturity (%)<input id="editYieldToMaturity" name="yieldToMaturity" type="number" step="0.01" /></label>
           <label>Bond Price<input id="editBondPrice" name="bondPrice" type="number" step="0.01" /></label>
           <label>Coupon Rate (%)<input id="editCouponRate" name="couponRate" type="number" step="0.01" /></label>

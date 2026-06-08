@@ -5,10 +5,16 @@ const RECORDS_STORAGE_KEY = "sovereign-bond-records-v1";
 const RECORDS_META_STORAGE_KEY = "sovereign-bond-records-meta-v1";
 const PINNED_STORAGE_KEY = "sovereign-bond-pinned-v1";
 const HIDDEN_STORAGE_KEY = "sovereign-bond-hidden-v1";
+const DEFAULT_BOND_TYPE = "localCurrency";
+const bondTypeLabels = {
+  localCurrency: "Local Currency",
+  eurobond: "Eurobond"
+};
 const csvColumnDefinitions = [
   { key: "country", label: "Country" },
   { key: "region", label: "Region" },
   { key: "bondName", label: "Bond Name" },
+  { key: "bondType", label: "Bond Type" },
   { key: "currency", label: "Currency" },
   { key: "maturity", label: "Maturity" },
   { key: "couponRate", label: "Coupon Rate (%)" },
@@ -60,6 +66,7 @@ const tableBody = document.querySelector("#bondRows");
 const hiddenList = document.querySelector("#hiddenList");
 const hiddenCount = document.querySelector("#hiddenCount");
 const searchInput = document.querySelector("#searchInput");
+const bondTypeFilter = document.querySelector("#bondTypeFilter");
 const regionFilter = document.querySelector("#regionFilter");
 const sortMode = document.querySelector("#sortMode");
 const visibleCount = document.querySelector("#visibleCount");
@@ -167,15 +174,18 @@ function positionTooltip(tooltip, tip) {
 
 function getVisibleRows() {
   const query = searchInput.value.trim().toLowerCase();
+  const bondType = bondTypeFilter.value;
   const region = regionFilter.value;
   const sort = sortMode.value;
 
   const filteredRows = scoredRows
     .filter((row) => {
       if (hiddenCountries.has(row.country)) return false;
+      const rowBondType = normalizeBondType(row.bondType);
+      const matchesBondType = bondType === "all" || rowBondType === bondType;
       const matchesRegion = region === "all" || row.region === region;
-      const searchText = `${row.country} ${row.region} ${row.currency} ${row.creditRating} ${row.rating || ""}`.toLowerCase();
-      return matchesRegion && searchText.includes(query);
+      const searchText = `${row.country} ${row.region} ${row.currency} ${getBondTypeLabel(rowBondType)} ${row.creditRating} ${row.rating || ""}`.toLowerCase();
+      return matchesBondType && matchesRegion && searchText.includes(query);
     });
 
   return sortRows(filteredRows, sort);
@@ -222,6 +232,7 @@ function renderRows(rows) {
             </div>
           </td>
           <td class="country-cell">${row.country}</td>
+          <td>${getBondTypeLabel(row.bondType)}</td>
           <td>
             <button class="pin-toggle ${isPinned ? "is-pinned" : ""}" type="button" aria-pressed="${isPinned}" data-country="${row.country}">
               ${isPinned ? "Pinned" : "Pin"}
@@ -249,7 +260,7 @@ function renderDetailRow(row) {
 
   return `
     <tr class="detail-row">
-      <td colspan="10">
+      <td colspan="11">
         <section class="detail-panel" aria-label="${row.country} score details">
           <div class="detail-summary">
             <article>
@@ -352,6 +363,7 @@ function formatBenchmark(indicator, benchmark) {
 }
 
 searchInput.addEventListener("input", renderTable);
+bondTypeFilter.addEventListener("change", renderTable);
 regionFilter.addEventListener("change", renderTable);
 sortMode.addEventListener("change", renderTable);
 tableBody.addEventListener("click", (event) => {
@@ -429,7 +441,14 @@ function loadRecords() {
 }
 
 function cloneRecords(sourceRecords) {
-  return sourceRecords.map((record) => ({ ...record }));
+  return sourceRecords.map((record) => normalizeRecord(record));
+}
+
+function normalizeRecord(record) {
+  return {
+    ...record,
+    bondType: normalizeBondType(record.bondType)
+  };
 }
 
 function mergeLatestSampleRecords(storedRecords) {
@@ -446,6 +465,18 @@ function mergeLatestSampleRecords(storedRecords) {
 
 function normalizeCountryKey(country) {
   return String(country || "").trim().toLowerCase();
+}
+
+function normalizeBondType(value) {
+  const normalized = String(value || "").trim().toLowerCase().replace(/[^a-z0-9]/g, "");
+  if (["eurobond", "eurobonds", "foreigncurrency", "foreigncurrencybond", "foreigncurrencybonds", "externalbond", "externalbonds"].includes(normalized)) {
+    return "eurobond";
+  }
+  return DEFAULT_BOND_TYPE;
+}
+
+function getBondTypeLabel(value) {
+  return bondTypeLabels[normalizeBondType(value)] || bondTypeLabels[DEFAULT_BOND_TYPE];
 }
 
 function persistRecords(nextRecords) {
@@ -542,7 +573,7 @@ function renderHiddenCountries() {
           (record) => `
             <div class="hidden-item">
               <span>${record.country}</span>
-              <small>${record.region} / ${record.currency}</small>
+              <small>${record.region} / ${record.currency} / ${getBondTypeLabel(record.bondType)}</small>
               <button class="restore-toggle" type="button" data-country="${record.country}">Restore</button>
             </div>
           `
@@ -562,6 +593,7 @@ function openEditForm(country) {
 
   editTitle.textContent = `Edit ${record.country}`;
   editForm.elements.country.value = record.country;
+  editForm.elements.bondType.value = normalizeBondType(record.bondType);
   editForm.elements.creditRating.value = record.creditRating;
   editForm.elements.sourceNote.value = record.sourceNote || "";
 
@@ -584,6 +616,7 @@ function saveEditForm() {
 
   const updatedRecord = {
     ...records[recordIndex],
+    bondType: normalizeBondType(editForm.elements.bondType.value),
     creditRating: editForm.elements.creditRating.value,
     sourceNote: editForm.elements.sourceNote.value.trim(),
     lastUpdated: new Date().toISOString()
@@ -691,7 +724,7 @@ function parseCsvRecords(text) {
       record[field] = parseNullableNumber(record[field] ?? "");
     }
 
-    return {
+    return normalizeRecord({
       country: record.country || "Unknown",
       region: record.region || "Unassigned",
       bondName: record.bondName || "",
@@ -701,7 +734,7 @@ function parseCsvRecords(text) {
       sourceNote: record.sourceNote || "",
       lastUpdated: record.lastUpdated || new Date().toISOString(),
       ...record
-    };
+    });
   });
 }
 

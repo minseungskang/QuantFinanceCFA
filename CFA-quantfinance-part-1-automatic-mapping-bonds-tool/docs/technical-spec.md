@@ -43,7 +43,8 @@ node scripts/dev-server.mjs
 The core entity is a country-level sovereign bond record:
 
 - One country.
-- One representative 10-year local-currency sovereign bond.
+- One representative 10-year sovereign bond.
+- Bond type, currently `Local Currency` or `Eurobond`.
 - Country-level risk metrics.
 - Bond-level return and liquidity metrics.
 - UI state such as pinned or hidden.
