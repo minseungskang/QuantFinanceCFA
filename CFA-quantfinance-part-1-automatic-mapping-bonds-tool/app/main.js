@@ -78,6 +78,7 @@ const cancelEdit = document.querySelector("#cancelEdit");
 
 onlineCount.textContent = "1";
 updateSaveStatus(initialSaveStatusMessage);
+setupInfoTooltips();
 
 const indicatorLabels = {
   yieldToMaturity: "Yield to Maturity",
@@ -110,6 +111,59 @@ const indicatorUnits = {
   policyInterestRate: "%",
   goldReserves: "tonnes"
 };
+
+function setupInfoTooltips() {
+  const tooltip = document.createElement("div");
+  tooltip.className = "floating-tooltip";
+  tooltip.setAttribute("role", "tooltip");
+  document.body.appendChild(tooltip);
+
+  let activeTip = null;
+
+  const showTooltip = (tip) => {
+    const text = tip.dataset.tooltip;
+    if (!text) return;
+
+    activeTip = tip;
+    tooltip.textContent = text;
+    tooltip.classList.add("is-visible");
+    positionTooltip(tooltip, tip);
+  };
+
+  const hideTooltip = () => {
+    activeTip = null;
+    tooltip.classList.remove("is-visible");
+  };
+
+  document.querySelectorAll(".info-tip").forEach((tip) => {
+    tip.addEventListener("mouseenter", () => showTooltip(tip));
+    tip.addEventListener("focus", () => showTooltip(tip));
+    tip.addEventListener("mouseleave", hideTooltip);
+    tip.addEventListener("blur", hideTooltip);
+  });
+
+  document.querySelector(".table-panel")?.addEventListener("scroll", () => {
+    if (activeTip) positionTooltip(tooltip, activeTip);
+  });
+  window.addEventListener("resize", () => {
+    if (activeTip) positionTooltip(tooltip, activeTip);
+  });
+}
+
+function positionTooltip(tooltip, tip) {
+  const margin = 12;
+  const tipRect = tip.getBoundingClientRect();
+  const tooltipRect = tooltip.getBoundingClientRect();
+  const targetCenter = tipRect.left + tipRect.width / 2;
+  const maxLeft = window.innerWidth - tooltipRect.width - margin;
+  const left = Math.max(margin, Math.min(targetCenter - tooltipRect.width / 2, maxLeft));
+  const top = tipRect.bottom + 10;
+  const arrowLeft = Math.max(12, Math.min(targetCenter - left, tooltipRect.width - 12));
+
+  tooltip.style.left = `${left}px`;
+  tooltip.style.top = `${top}px`;
+  tooltip.style.setProperty("--tooltip-arrow-left", `${arrowLeft}px`);
+}
 
 function getVisibleRows() {
   const query = searchInput.value.trim().toLowerCase();
