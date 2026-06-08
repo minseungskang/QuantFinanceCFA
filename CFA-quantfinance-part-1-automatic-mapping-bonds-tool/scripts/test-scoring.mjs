@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { scoreRecords, CREDIT_RATING_SCORES, DEFAULT_WEIGHTS } from "../app/scoring.js";
+import { scoreRecords, CREDIT_RATING_SCORES, DEFAULT_WEIGHTS, FIXED_BENCHMARKS } from "../app/scoring.js";
 import { sampleRecords } from "../app/sample-data.js";
 
 const fixtureRecords = [
@@ -75,6 +75,18 @@ assert.equal(roundForTest(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.liquidi
 assert.equal(roundForTest(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.bondPriceDiscount), 0.1667);
 assert.equal(DEFAULT_WEIGHTS.indicators.sovereignRisk.inflationRate, 0);
 assert.equal(roundForTest(DEFAULT_WEIGHTS.indicators.sovereignRisk.creditRating), 0.3111);
+assert.equal(FIXED_BENCHMARKS.realYield.method, "fixed-piecewise");
+assert.deepEqual(
+  FIXED_BENCHMARKS.realYield.points.map((point) => [point.rawValue, point.score]),
+  [
+    [-2, 0],
+    [0, 30],
+    [2, 55],
+    [4, 75],
+    [6, 90],
+    [8, 100]
+  ]
+);
 assert.equal(scored.length, fixtureRecords.length);
 assert.ok(sampleRecords.length >= 100);
 
@@ -94,6 +106,8 @@ assert.equal(alpha.scoreBreakdown.sovereignRisk.components.creditRating.normaliz
 assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.weight, 0);
 assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.rawValue, 3);
 assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.realYield.weight, 0.5);
+assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.realYield.benchmark.method, "fixed-piecewise");
+assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.realYield.normalized, 42.5);
 assert.equal(alpha.scoreBreakdown.sovereignRisk.components.inflationRate.weight, 0);
 assert.equal(alpha.scoreBreakdown.sovereignRisk.components.inflationRate.rawValue, 2);
 assert.equal(alpha.scoreBreakdown.bondReturnLiquidity.components.yieldToMaturity.benchmark.method, "winsorized-min-max");
@@ -106,6 +120,34 @@ assert.ok(
     alpha.scoreBreakdown.sovereignRisk.components.cdsSpread.benchmark.zeroScoreValue
 );
 assert.ok(alpha.totalScore > gamma.totalScore);
+
+const benchmarkStabilityResult = scoreRecords([
+  ...fixtureRecords,
+  {
+    country: "Stable 3 Percent Real Yield",
+    region: "Test",
+    currency: "STB",
+    yieldToMaturity: 5,
+    inflationRate: 2,
+    creditRating: "AA",
+    bondPrice: 98,
+    liquidityBidAskSpread: 0.03,
+    debtToGdp: 50,
+    fiscalDeficitToGdp: 2,
+    exchangeRateVolatility: 6,
+    foreignExchangeReserves: 500,
+    policyInterestRate: 3,
+    goldReserves: 500,
+    cdsSpread: 20
+  }
+]).find((record) => record.country === "Stable 3 Percent Real Yield");
+
+assert.ok(benchmarkStabilityResult);
+assert.equal(benchmarkStabilityResult.realYield, 3);
+assert.equal(
+  benchmarkStabilityResult.scoreBreakdown.bondReturnLiquidity.components.realYield.normalized,
+  65
+);
 
 const missingHeavyRecord = {
   country: "Missing Data Test",

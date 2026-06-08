@@ -102,13 +102,33 @@ Exact numeric values should be implemented in the scoring engine and tested.
 
 ## Normalization
 
-Each numeric indicator should be normalized to a comparable 0-100 scale.
+Each scored numeric indicator should be normalized to a comparable 0-100 scale.
 
 For higher-is-better indicators, higher normalized values should increase score.
 
 For lower-is-better indicators, lower raw values should increase score.
 
-The first implementation uses winsorized min-max normalization, with the scoring logic kept isolated so future methods can be added.
+The current implementation uses a hybrid approach:
+
+- Real Yield uses a fixed piecewise benchmark.
+- Other active numeric indicators use winsorized min-max normalization.
+
+## Real Yield Fixed Benchmark
+
+Real Yield is scored with fixed financial thresholds instead of sample-relative percentiles.
+
+- -2% or lower = 0
+- 0% = 30
+- 2% = 55
+- 4% = 75
+- 6% = 90
+- 8% or higher = 100
+
+Values between these points are linearly interpolated.
+
+This prevents a stable low-risk country from receiving an excessively low Real Yield score only because the current sample includes many high-yield, high-risk countries.
+
+## Winsorized Min-Max Normalization
 
 Winsorized min-max reduces outlier distortion:
 
@@ -118,6 +138,7 @@ Winsorized min-max reduces outlier distortion:
 
 The UI must show the active benchmark for each normalized indicator:
 
+- For Real Yield: show the fixed benchmark points.
 - For higher-is-better indicators: P95 = 100, P5 = 0.
 - For lower-is-better indicators: P5 = 100, P95 = 0.
 - For mapped indicators such as credit rating: show the rating scale benchmark, such as AAA = 100 and D = 0.

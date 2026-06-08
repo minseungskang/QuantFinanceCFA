@@ -55,6 +55,21 @@ export const NORMALIZATION_CONFIG = {
   upperPercentile: 0.95
 };
 
+export const FIXED_BENCHMARKS = {
+  realYield: {
+    method: "fixed-piecewise",
+    direction: "higher",
+    points: [
+      { rawValue: -2, score: 0 },
+      { rawValue: 0, score: 30 },
+      { rawValue: 2, score: 55 },
+      { rawValue: 4, score: 75 },
+      { rawValue: 6, score: 90 },
+      { rawValue: 8, score: 100 }
+    ]
+  }
+};
+
 const INDICATOR_DEFINITIONS = {
   yieldToMaturity: { category: "bondReturnLiquidity", direction: "higher" },
   realYield: { category: "bondReturnLiquidity", direction: "higher" },
@@ -132,6 +147,47 @@ function normalizeValue(value, min, max, direction) {
   return direction === "lower" ? 100 - normalized : normalized;
 }
 
+function normalizePiecewiseValue(value, points) {
+  if (!isUsableNumber(value)) return null;
+  if (!Array.isArray(points) || points.length === 0) return null;
+
+  const sortedPoints = [...points].sort((a, b) => a.rawValue - b.rawValue);
+  const firstPoint = sortedPoints[0];
+  const lastPoint = sortedPoints[sortedPoints.length - 1];
+
+  if (value <= firstPoint.rawValue) return firstPoint.score;
+  if (value >= lastPoint.rawValue) return lastPoint.score;
+
+  for (let index = 0; index < sortedPoints.length - 1; index += 1) {
+    const currentPoint = sortedPoints[index];
+    const nextPoint = sortedPoints[index + 1];
+
+    if (value >= currentPoint.rawValue && value <= nextPoint.rawValue) {
+      const distance = nextPoint.rawValue - currentPoint.rawValue;
+      const ratio = distance === 0 ? 0 : (value - currentPoint.rawValue) / distance;
+      return currentPoint.score + ratio * (nextPoint.score - currentPoint.score);
+    }
+  }
+
+  return null;
+}
+
+function getFixedBenchmark(indicator) {
+  const benchmark = FIXED_BENCHMARKS[indicator];
+  if (!benchmark) return null;
+
+  const sortedPoints = [...benchmark.points].sort((a, b) => a.rawValue - b.rawValue);
+  const zeroPoint = sortedPoints[0];
+  const hundredPoint = sortedPoints[sortedPoints.length - 1];
+
+  return {
+    ...benchmark,
+    zeroScoreValue: zeroPoint.rawValue,
+    hundredScoreValue: hundredPoint.rawValue,
+    points: sortedPoints
+  };
+}
+
 function getBenchmark(range) {
   if (!range || range.min === null || range.max === null) {
     return { zeroScoreValue: null, hundredScoreValue: null, direction: null };
@@ -187,9 +243,12 @@ function scoreCategory(record, category, ranges, weights = DEFAULT_WEIGHTS) {
     possibleWeight += indicatorWeight;
 
     const range = ranges[indicator];
+    const fixedBenchmark = getFixedBenchmark(indicator);
     const rawValue = getRawIndicatorValue(record, indicator);
     const hasRange = range && range.min !== null && range.max !== null;
-    const normalized = hasRange
+    const normalized = fixedBenchmark
+      ? normalizePiecewiseValue(rawValue, fixedBenchmark.points)
+      : hasRange
       ? normalizeValue(rawValue, range.min, range.max, range.direction)
       : null;
 
@@ -197,7 +256,7 @@ function scoreCategory(record, category, ranges, weights = DEFAULT_WEIGHTS) {
       rawValue,
       normalized: normalized === null ? null : round(normalized),
       weight: indicatorWeight,
-      benchmark: getBenchmark(range)
+      benchmark: fixedBenchmark || getBenchmark(range)
     };
 
     if (normalized === null) continue;

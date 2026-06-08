@@ -291,6 +291,13 @@ function formatBenchmark(indicator, benchmark) {
     return "Benchmark: AAA = 100, D = 0";
   }
 
+  if (benchmark.method === "fixed-piecewise") {
+    const pointText = benchmark.points
+      .map((point) => `${formatRawValue(indicator, point.rawValue)}=${point.score}`)
+      .join(", ");
+    return `Benchmark: fixed scale ${pointText}`;
+  }
+
   const zeroValue = formatRawValue(indicator, benchmark.zeroScoreValue);
   const hundredValue = formatRawValue(indicator, benchmark.hundredScoreValue);
   const hundredLabel = benchmark.direction === "lower" ? "P5" : "P95";
