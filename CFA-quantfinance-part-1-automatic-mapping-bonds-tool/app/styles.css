@@ -115,17 +115,110 @@ h1 {
 
 .controls {
   display: grid;
-  grid-template-columns: 1.45fr 0.9fr 0.9fr 1fr;
+  grid-template-columns: 1.15fr 1.45fr 0.85fr 0.85fr;
   gap: 14px;
   margin-bottom: 18px;
 }
 
-label {
+label,
+.bond-type-control {
   display: grid;
   gap: 7px;
   color: #42526b;
   font-size: 13px;
   font-weight: 650;
+}
+
+.bond-type-control {
+  min-width: 0;
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.bond-type-control legend {
+  padding: 0;
+}
+
+.bond-type-control select {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  min-height: 0;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+.bond-type-segments {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  min-height: 42px;
+}
+
+.bond-type-option {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "label count"
+    "note count";
+  align-items: center;
+  min-width: 0;
+  min-height: 42px;
+  border: 1px solid #c8dfef;
+  border-radius: 8px;
+  padding: 7px 9px;
+  color: #42526b;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.bond-type-option span {
+  grid-area: label;
+  overflow: hidden;
+  color: #172033;
+  font-size: 13px;
+  font-weight: 760;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bond-type-option small {
+  grid-area: note;
+  overflow: hidden;
+  color: #607188;
+  font-size: 11px;
+  font-weight: 650;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bond-type-option strong {
+  grid-area: count;
+  color: #126497;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.bond-type-option:hover,
+.bond-type-option:focus {
+  border-color: #8ec5e9;
+  outline: none;
+}
+
+.bond-type-option.is-active {
+  border-color: #1677b8;
+  color: #ffffff;
+  background: #1677b8;
+}
+
+.bond-type-option.is-active span,
+.bond-type-option.is-active small,
+.bond-type-option.is-active strong {
+  color: #ffffff;
 }
 
 input,

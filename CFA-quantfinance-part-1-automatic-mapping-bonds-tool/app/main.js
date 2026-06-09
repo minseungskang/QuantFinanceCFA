@@ -67,6 +67,12 @@ const hiddenList = document.querySelector("#hiddenList");
 const hiddenCount = document.querySelector("#hiddenCount");
 const searchInput = document.querySelector("#searchInput");
 const bondTypeFilter = document.querySelector("#bondTypeFilter");
+const bondTypeButtons = [...document.querySelectorAll(".bond-type-option")];
+const bondTypeCountTargets = {
+  localCurrency: document.querySelector("#localCurrencyCount"),
+  eurobond: document.querySelector("#eurobondCount"),
+  all: document.querySelector("#allBondTypeCount")
+};
 const regionFilter = document.querySelector("#regionFilter");
 const sortMode = document.querySelector("#sortMode");
 const visibleCount = document.querySelector("#visibleCount");
@@ -173,22 +179,28 @@ function positionTooltip(tooltip, tip) {
 }
 
 function getVisibleRows() {
-  const query = searchInput.value.trim().toLowerCase();
   const bondType = bondTypeFilter.value;
-  const region = regionFilter.value;
   const sort = sortMode.value;
 
   const filteredRows = scoredRows
     .filter((row) => {
-      if (hiddenCountries.has(row.country)) return false;
       const rowBondType = normalizeBondType(row.bondType);
       const matchesBondType = bondType === "all" || rowBondType === bondType;
-      const matchesRegion = region === "all" || row.region === region;
-      const searchText = `${row.country} ${row.region} ${row.currency} ${getBondTypeLabel(rowBondType)} ${row.creditRating}`.toLowerCase();
-      return matchesBondType && matchesRegion && searchText.includes(query);
+      return matchesSharedFilters(row) && matchesBondType;
     });
 
   return sortRows(filteredRows, sort);
+}
+
+function matchesSharedFilters(row) {
+  if (hiddenCountries.has(row.country)) return false;
+
+  const query = searchInput.value.trim().toLowerCase();
+  const region = regionFilter.value;
+  const rowBondType = normalizeBondType(row.bondType);
+  const matchesRegion = region === "all" || row.region === region;
+  const searchText = `${row.country} ${row.region} ${row.currency} ${getBondTypeLabel(rowBondType)} ${row.creditRating}`.toLowerCase();
+  return matchesRegion && searchText.includes(query);
 }
 
 function sortRows(rows, sort) {
@@ -205,8 +217,31 @@ function sortRows(rows, sort) {
 function renderTable() {
   const rows = getVisibleRows();
   visibleCount.textContent = String(rows.length);
+  updateBondTypeControls();
   tableBody.innerHTML = renderRows(rows);
   renderHiddenCountries();
+}
+
+function updateBondTypeControls() {
+  const activeBondType = bondTypeFilter.value;
+  const counts = { localCurrency: 0, eurobond: 0, all: 0 };
+
+  scoredRows.forEach((row) => {
+    if (!matchesSharedFilters(row)) return;
+    const rowBondType = normalizeBondType(row.bondType);
+    if (counts[rowBondType] !== undefined) counts[rowBondType] += 1;
+    counts.all += 1;
+  });
+
+  Object.entries(bondTypeCountTargets).forEach(([bondType, target]) => {
+    if (target) target.textContent = String(counts[bondType]);
+  });
+
+  bondTypeButtons.forEach((button) => {
+    const isActive = button.dataset.bondType === activeBondType;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 }
 
 function renderRows(rows) {
@@ -369,6 +404,12 @@ function formatBenchmark(indicator, benchmark) {
 
 searchInput.addEventListener("input", renderTable);
 bondTypeFilter.addEventListener("change", renderTable);
+bondTypeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    bondTypeFilter.value = button.dataset.bondType;
+    renderTable();
+  });
+});
 regionFilter.addEventListener("change", renderTable);
 sortMode.addEventListener("change", renderTable);
 tableBody.addEventListener("click", (event) => {

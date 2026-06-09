@@ -31,14 +31,31 @@
           Search
           <input id="searchInput" type="search" placeholder="Country, currency, rating..." />
         </label>
-        <label>
-          Bond Type
-          <select id="bondTypeFilter">
+        <fieldset class="bond-type-control">
+          <legend>Bond Type</legend>
+          <select id="bondTypeFilter" aria-label="Bond Type">
             <option value="localCurrency" selected>Local Currency</option>
             <option value="eurobond">Eurobond</option>
             <option value="all">All bond types</option>
           </select>
-        </label>
+          <div class="bond-type-segments" role="group" aria-label="Bond type filter">
+            <button class="bond-type-option is-active" type="button" data-bond-type="localCurrency" aria-pressed="true">
+              <span>Regular</span>
+              <small>Local</small>
+              <strong id="localCurrencyCount">0</strong>
+            </button>
+            <button class="bond-type-option" type="button" data-bond-type="eurobond" aria-label="Eurobond" aria-pressed="false">
+              <span>Euro</span>
+              <small>Bond</small>
+              <strong id="eurobondCount">0</strong>
+            </button>
+            <button class="bond-type-option" type="button" data-bond-type="all" aria-pressed="false">
+              <span>All</span>
+              <small>Total</small>
+              <strong id="allBondTypeCount">0</strong>
+            </button>
+          </div>
+        </fieldset>
         <label>
           Region
           <select id="regionFilter">
