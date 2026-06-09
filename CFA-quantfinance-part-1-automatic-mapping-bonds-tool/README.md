@@ -74,7 +74,7 @@ The preview includes:
 - Sort control
 - Sample sovereign bond ranking table
 - Scores and completeness calculated by the shared scoring engine
-- Bond Type segmented control with direct `Regular`, `Euro`, and `All` views
+- Bond Type segmented control with direct `Regular`, `Eurobond`, and `All` views
 - Expandable score details showing rating score, category scores, and component scores
 - Raw component values next to normalized model scores
 - Winsorized P95/P5 benchmarks showing which raw value maps to 100 and which maps to 0
