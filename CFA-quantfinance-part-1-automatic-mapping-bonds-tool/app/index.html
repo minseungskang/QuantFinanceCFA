@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sovereign Bond Screening Tool</title>
-    <link rel="stylesheet" href="/styles.css?v=2026-06-09-excel-ytm-v1" />
+    <link rel="stylesheet" href="/styles.css?v=2026-06-09-rating-score-v1" />
   </head>
   <body>
     <main class="app-shell">
@@ -71,6 +71,7 @@
           <select id="sortMode">
             <option value="score-desc">Score high to low</option>
             <option value="score-asc">Score low to high</option>
+            <option value="rating-desc">Rating high to low</option>
             <option value="az">Country A-Z</option>
           </select>
         </label>
@@ -122,6 +123,7 @@
             <col class="currency-col" />
             <col class="ytm-col" />
             <col class="rating-col" />
+            <col class="rating-score-col" />
             <col class="score-col" />
             <col class="confidence-col" />
           </colgroup>
@@ -140,11 +142,15 @@
               <th>YTM</th>
               <th>
                 Rating
-                <span class="info-tip" tabindex="0" data-tooltip="Credit rating order from strongest to weakest: AAA, AA+, AA, AA-, A+, A, A-, BBB+, BBB, BBB-, BB+, BB, BB-, B+, B, B-, CCC+, CCC, CCC-, CC, C, D. AA- is stronger than A+." aria-label="Credit rating order from strongest to weakest: AAA, AA+, AA, AA-, A+, A, A-, BBB+, BBB, BBB-, BB+, BB, BB-, B+, B, B-, CCC+, CCC, CCC-, CC, C, D. AA- is stronger than A+.">i</span>
+                <span class="info-tip" tabindex="0" data-tooltip="Credit rating order from strongest to weakest: AAA, AA+, AA, AA-, A+, A, A-, BBB+, BBB, BBB-, BB+, BB, BB-, B+, B, B-, CCC+, CCC, CCC-, CC, C, D. AA- maps to 85 points; A+ maps to 80 points." aria-label="Credit rating order from strongest to weakest: AAA, AA+, AA, AA-, A+, A, A-, BBB+, BBB, BBB-, BB+, BB, BB-, B+, B, B-, CCC+, CCC, CCC-, CC, C, D. AA- maps to 85 points; A+ maps to 80 points.">i</span>
               </th>
               <th>
-                Total Score
-                <span class="info-tip" tabindex="0" data-tooltip="Total Score combines Bond Return and Liquidity at 35 percent with Sovereign Risk at 65 percent. Higher is better." aria-label="Total Score combines Bond Return and Liquidity at 35 percent with Sovereign Risk at 65 percent. Higher is better.">i</span>
+                Rating Score
+                <span class="info-tip" tabindex="0" data-tooltip="Rating Score is only the numeric credit-rating mapping. AAA = 100, AA- = 85, A+ = 80, D = 0. Higher is stronger credit quality." aria-label="Rating Score is only the numeric credit-rating mapping. AAA = 100, AA- = 85, A+ = 80, D = 0. Higher is stronger credit quality.">i</span>
+              </th>
+              <th>
+                Model Score
+                <span class="info-tip" tabindex="0" data-tooltip="Model Score is not the credit-rating order. It combines return and liquidity at 35 percent with sovereign risk at 65 percent, so a lower-rated bond can rank higher if other inputs compensate." aria-label="Model Score is not the credit-rating order. It combines return and liquidity at 35 percent with sovereign risk at 65 percent, so a lower-rated bond can rank higher if other inputs compensate.">i</span>
               </th>
               <th>
                 Completeness
@@ -211,6 +217,6 @@
       </form>
     </section>
 
-    <script type="module" src="/main.js?v=2026-06-09-excel-ytm-v1"></script>
+    <script type="module" src="/main.js?v=2026-06-09-rating-score-v1"></script>
   </body>
 </html>

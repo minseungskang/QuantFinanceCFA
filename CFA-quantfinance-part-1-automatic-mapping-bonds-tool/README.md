@@ -74,6 +74,7 @@ The preview includes:
 - Sort control
 - Sample sovereign bond ranking table
 - Scores and completeness calculated by the shared scoring engine
+- Separate `Rating Score` column so credit-rating order is visible beside the broader `Model Score`
 - Bond Type segmented control with direct `Regular`, `Eurobond`, and `All` views
 - Expandable score details showing rating score, category scores, and component scores
 - Raw component values next to normalized model scores
@@ -88,6 +89,7 @@ The preview includes:
 - CSV export for the current visible ranking
 - CSV import for replacing the local dataset
 - CSV headers include human-readable names and units, such as `Debt-to-GDP (%)` and `CDS Spread (bps)`
+- CSV export includes both `Rating Score (0-100)` and `Model Score (0-100)` to avoid mixing credit rating order with the full scoring model
 
 Note: the table's Completeness value means the fields needed by the scoring model are present. It is not a guarantee that every sample value is market-source verified.
 

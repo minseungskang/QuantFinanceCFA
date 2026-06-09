@@ -1,4 +1,4 @@
-import { scoreRecords } from "./scoring.js";
+import { CREDIT_RATING_SCORES, scoreRecords } from "./scoring.js";
 import { sampleRecords } from "./sample-data.js";
 
 const RECORDS_STORAGE_KEY = "sovereign-bond-records-v1";
@@ -210,6 +210,9 @@ function sortRows(rows, sort) {
     if (pinnedDelta !== 0) return pinnedDelta;
 
     if (sort === "score-asc") return a.totalScore - b.totalScore;
+    if (sort === "rating-desc") {
+      return getCreditRatingScore(b.creditRating) - getCreditRatingScore(a.creditRating) || b.totalScore - a.totalScore;
+    }
     if (sort === "az") return a.country.localeCompare(b.country);
     return b.totalScore - a.totalScore;
   });
@@ -288,6 +291,7 @@ function renderRows(rows) {
             />
           </td>
           <td><span class="rating">${row.creditRating}</span></td>
+          <td class="rating-score">${formatRatingScore(getCreditRatingScore(row.creditRating))}</td>
           <td class="score">${row.totalScore.toFixed(1)}</td>
           <td>${row.dataConfidence.toFixed(1)}%</td>
         </tr>
@@ -306,7 +310,7 @@ function renderDetailRow(row) {
 
   return `
     <tr class="detail-row">
-      <td colspan="11">
+      <td colspan="12">
         <section class="detail-panel" aria-label="${row.country} score details">
           <div class="detail-summary">
             <article>
@@ -325,7 +329,7 @@ function renderDetailRow(row) {
               <small>Category weight: 65%</small>
             </article>
             <article>
-              <span>Total Score</span>
+              <span>Model Score</span>
               <strong>${row.totalScore.toFixed(1)} / 100</strong>
               <small>Data completeness: ${row.dataConfidence.toFixed(1)}%</small>
             </article>
@@ -370,6 +374,14 @@ function renderComponentList(components) {
 
 function formatScore(value) {
   return value === null ? "Missing" : value.toFixed(1);
+}
+
+function getCreditRatingScore(rating) {
+  return CREDIT_RATING_SCORES[rating] ?? null;
+}
+
+function formatRatingScore(value) {
+  return value === null ? "Missing" : value.toFixed(0);
 }
 
 function formatRawValue(indicator, value) {
@@ -782,7 +794,8 @@ function exportVisibleCsv() {
   const exportColumns = [
     { key: "rank", label: "Rank" },
     ...csvColumnDefinitions,
-    { key: "totalScore", label: "Total Score (0-100)" },
+    { key: "ratingScore", label: "Rating Score (0-100)" },
+    { key: "totalScore", label: "Model Score (0-100)" },
     { key: "dataConfidence", label: "Data Completeness (%)" },
     { key: "realYield", label: "Real Yield (%)" }
   ];
@@ -792,6 +805,7 @@ function exportVisibleCsv() {
       exportColumns
         .map((column) => {
           if (column.key === "rank") return index + 1;
+          if (column.key === "ratingScore") return formatCsvValue(getCreditRatingScore(row.creditRating));
           return formatCsvValue(row[column.key]);
         })
         .join(",")

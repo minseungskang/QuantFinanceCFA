@@ -68,6 +68,9 @@ const fixtureRecords = [
 const scored = scoreRecords(fixtureRecords);
 
 assert.equal(CREDIT_RATING_SCORES.AAA, 100);
+assert.equal(CREDIT_RATING_SCORES["AA-"], 85);
+assert.equal(CREDIT_RATING_SCORES["A+"], 80);
+assert.ok(CREDIT_RATING_SCORES["AA-"] > CREDIT_RATING_SCORES["A+"]);
 assert.equal(CREDIT_RATING_SCORES.D, 0);
 assert.equal(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.yieldToMaturity, 0);
 assert.equal(DEFAULT_WEIGHTS.indicators.bondReturnLiquidity.realYield, 0.5);

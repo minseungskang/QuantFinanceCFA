@@ -286,7 +286,7 @@ select {
 
 table {
   width: 100%;
-  min-width: 1660px;
+  min-width: 1790px;
   border-collapse: collapse;
   table-layout: fixed;
 }
@@ -319,6 +319,10 @@ table {
 .ytm-col,
 .rating-col {
   width: 130px;
+}
+
+.rating-score-col {
+  width: 150px;
 }
 
 .score-col,
@@ -427,6 +431,11 @@ tr:last-child td {
 .score {
   font-weight: 760;
   color: #126497;
+}
+
+.rating-score {
+  font-weight: 760;
+  color: #42526b;
 }
 
 .rating {
