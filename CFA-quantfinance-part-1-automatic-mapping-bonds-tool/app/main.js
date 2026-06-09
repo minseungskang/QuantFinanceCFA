@@ -486,11 +486,12 @@ function loadRecords() {
     if (!Array.isArray(storedRecords)) return cloneRecords(sampleRecords);
 
     const merged = mergeLatestSampleRecords(storedRecords);
-    if (merged.addedCount > 0 || merged.removedCount > 0) {
+    if (merged.addedCount > 0 || merged.removedCount > 0 || merged.classificationUpdateCount > 0) {
       persistRecords(merged.records);
       const changes = [];
       if (merged.addedCount > 0) changes.push(`${merged.addedCount} sample countries added`);
       if (merged.removedCount > 0) changes.push(`${merged.removedCount} retired sample countries removed`);
+      if (merged.classificationUpdateCount > 0) changes.push(`${merged.classificationUpdateCount} bond type classifications updated`);
       initialSaveStatusMessage = changes.join("; ");
     }
 
@@ -512,8 +513,25 @@ function normalizeRecord(record) {
 }
 
 function mergeLatestSampleRecords(storedRecords) {
-  const sampleCountryKeys = new Set(sampleRecords.map((record) => normalizeCountryKey(record.country)));
-  const retainedStoredRecords = storedRecords.filter((record) => sampleCountryKeys.has(normalizeCountryKey(record.country)));
+  const sampleByCountryKey = new Map(sampleRecords.map((record) => [normalizeCountryKey(record.country), normalizeRecord(record)]));
+  const sampleCountryKeys = new Set(sampleByCountryKey.keys());
+  let classificationUpdateCount = 0;
+  const retainedStoredRecords = storedRecords
+    .filter((record) => sampleCountryKeys.has(normalizeCountryKey(record.country)))
+    .map((record) => {
+      const normalizedRecord = normalizeRecord(record);
+      const sampleRecord = sampleByCountryKey.get(normalizeCountryKey(record.country));
+      if (!sampleRecord) return normalizedRecord;
+
+      if (normalizedRecord.bondType !== sampleRecord.bondType) {
+        classificationUpdateCount += 1;
+      }
+
+      return {
+        ...normalizedRecord,
+        bondType: sampleRecord.bondType
+      };
+    });
   const existingCountries = new Set(retainedStoredRecords.map((record) => normalizeCountryKey(record.country)));
   const missingSampleRecords = sampleRecords.filter(
     (record) => !existingCountries.has(normalizeCountryKey(record.country))
@@ -522,6 +540,7 @@ function mergeLatestSampleRecords(storedRecords) {
 
   return {
     addedCount: missingSampleRecords.length,
+    classificationUpdateCount,
     removedCount,
     records: [...cloneRecords(retainedStoredRecords), ...cloneRecords(missingSampleRecords)]
   };
