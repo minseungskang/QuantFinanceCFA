@@ -8,7 +8,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 4.56,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -18,7 +18,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Canada",
@@ -29,7 +31,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 3.51,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -39,7 +41,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Mexico",
@@ -50,7 +54,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 9.16,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -60,7 +64,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot/public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Brazil",
@@ -71,7 +77,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 14.67,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -81,18 +87,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Argentina",
     region: "Americas",
     bondName: "Argentina 10Y Bond",
     bondType: "eurobond",
-    currency: "ARS",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 10.5,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -102,7 +110,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Chile",
@@ -113,7 +123,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 5.62,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -123,7 +133,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Colombia",
@@ -134,7 +146,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 12.25,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -144,7 +156,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Peru",
@@ -155,7 +169,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 5.07,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -165,7 +179,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Uruguay",
@@ -176,7 +192,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 8.8,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -186,18 +202,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Paraguay",
     region: "Americas",
     bondName: "Paraguay 10Y Bond",
     bondType: "eurobond",
-    currency: "PYG",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 6,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -207,7 +225,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Ecuador",
@@ -218,7 +238,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 12,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -228,18 +248,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Bolivia",
     region: "Americas",
     bondName: "Bolivia 10Y Bond",
     bondType: "eurobond",
-    currency: "BOB",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.44,
     bondPrice: 95.5,
-    yieldToMaturity: 5.59,
+    yieldToMaturity: 16,
     creditRating: "A+",
     debtToGdp: 80.4,
     fiscalDeficitToGdp: 3.3,
@@ -249,7 +271,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 400,
     goldReserves: 20,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "United Kingdom",
@@ -260,7 +284,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 4.9,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -270,7 +294,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Germany",
@@ -281,7 +307,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.06,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -291,7 +317,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "France",
@@ -302,7 +330,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.73,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -312,7 +340,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Italy",
@@ -323,7 +353,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.84,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -333,7 +363,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Spain",
@@ -344,7 +376,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.51,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -354,7 +386,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Netherlands",
@@ -365,7 +399,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.18,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -375,7 +409,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Belgium",
@@ -386,7 +422,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.63,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -396,7 +432,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Switzerland",
@@ -407,7 +445,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 0.43,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -417,7 +455,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Sweden",
@@ -428,7 +468,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 2.91,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -438,7 +478,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Norway",
@@ -449,7 +491,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 4.43,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -459,7 +501,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Denmark",
@@ -470,7 +514,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 2.93,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -480,7 +524,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Finland",
@@ -491,7 +537,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.41,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -501,7 +547,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Austria",
@@ -512,7 +560,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.31,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -522,7 +570,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Ireland",
@@ -533,7 +583,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.24,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -543,7 +593,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Portugal",
@@ -554,7 +606,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.45,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -564,7 +616,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Greece",
@@ -575,7 +629,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.75,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -585,7 +639,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Poland",
@@ -596,7 +652,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 5.87,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -606,7 +662,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Czech Republic",
@@ -617,7 +675,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 4.9,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -627,7 +685,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Hungary",
@@ -638,7 +698,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 5.6,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -648,7 +708,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Romania",
@@ -659,7 +721,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 6.8,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -669,7 +731,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot/public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Bulgaria",
@@ -680,7 +744,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.7,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -690,7 +754,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Slovakia",
@@ -701,7 +767,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.72,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -711,7 +777,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Slovenia",
@@ -722,7 +790,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.2,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -732,7 +800,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Croatia",
@@ -743,7 +813,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 3.35,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -753,7 +823,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Serbia",
@@ -764,7 +836,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 5.8,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -774,18 +846,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Montenegro",
     region: "Europe",
     bondName: "Montenegro 10Y Bond",
     bondType: "eurobond",
-    currency: "EUR",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 6,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -795,18 +869,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "North Macedonia",
     region: "Europe",
     bondName: "North Macedonia 10Y Bond",
     bondType: "eurobond",
-    currency: "MKD",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.01,
     bondPrice: 96.4,
-    yieldToMaturity: 5.16,
+    yieldToMaturity: 5.5,
     creditRating: "AA-",
     debtToGdp: 79.4,
     fiscalDeficitToGdp: 3.3,
@@ -816,7 +892,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 230,
     goldReserves: 11.5,
     cdsSpread: 59,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "China",
@@ -827,7 +905,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 1.73,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -837,7 +915,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Japan",
@@ -848,7 +928,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 2.73,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -858,7 +938,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "South Korea",
@@ -869,7 +951,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 4.35,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -879,7 +961,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "India",
@@ -890,7 +974,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 6.95,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -900,7 +984,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Indonesia",
@@ -911,7 +997,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 7.31,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -921,7 +1007,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Thailand",
@@ -932,7 +1020,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 2.31,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -942,7 +1030,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Vietnam",
@@ -953,7 +1043,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 4.47,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -963,7 +1053,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot/public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Malaysia",
@@ -974,7 +1066,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 3.62,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -984,7 +1076,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Singapore",
@@ -995,7 +1089,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 2.18,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1005,7 +1099,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Philippines",
@@ -1016,7 +1112,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 7.49,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1026,7 +1122,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Pakistan",
@@ -1037,7 +1135,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 12.93,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1047,7 +1145,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Bangladesh",
@@ -1058,7 +1158,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 12.05,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1068,7 +1168,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Nepal",
@@ -1079,7 +1181,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 6.5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1089,18 +1191,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Mongolia",
     region: "Asia",
     bondName: "Mongolia 10Y Bond",
     bondType: "eurobond",
-    currency: "MNT",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 7.5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1110,7 +1214,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Kazakhstan",
@@ -1121,7 +1227,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 13.5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1131,18 +1237,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Uzbekistan",
     region: "Asia",
     bondName: "Uzbekistan 10Y Bond",
     bondType: "eurobond",
-    currency: "UZS",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 7.5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1152,18 +1260,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Azerbaijan",
     region: "Asia",
     bondName: "Azerbaijan 10Y Bond",
     bondType: "eurobond",
-    currency: "AZN",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 5.5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1173,18 +1283,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Georgia",
     region: "Asia",
     bondName: "Georgia 10Y Bond",
     bondType: "eurobond",
-    currency: "GEL",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1194,18 +1306,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Armenia",
     region: "Asia",
     bondName: "Armenia 10Y Bond",
     bondType: "eurobond",
-    currency: "AMD",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.46,
     bondPrice: 95.5,
-    yieldToMaturity: 5.61,
+    yieldToMaturity: 6.5,
     creditRating: "A+",
     debtToGdp: 80.9,
     fiscalDeficitToGdp: 3.3,
@@ -1215,18 +1329,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 650,
     goldReserves: 19.5,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Saudi Arabia",
     region: "Middle East",
     bondName: "Saudi Arabia 10Y Bond",
     bondType: "localCurrency",
-    currency: "SAR",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 5.3,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1236,18 +1352,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "United Arab Emirates",
     region: "Middle East",
     bondName: "UAE 10Y Bond",
     bondType: "eurobond",
-    currency: "AED",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 4.8,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1257,18 +1375,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Qatar",
     region: "Middle East",
     bondName: "Qatar 10Y Bond",
     bondType: "eurobond",
-    currency: "QAR",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 4.8,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1278,18 +1398,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Kuwait",
     region: "Middle East",
     bondName: "Kuwait 10Y Bond",
     bondType: "eurobond",
-    currency: "KWD",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 5,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1299,18 +1421,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Bahrain",
     region: "Middle East",
     bondName: "Bahrain 10Y Bond",
     bondType: "eurobond",
-    currency: "BHD",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 6.5,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1320,18 +1444,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Oman",
     region: "Middle East",
     bondName: "Oman 10Y Bond",
     bondType: "eurobond",
-    currency: "OMR",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 4.23,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1341,7 +1467,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Israel",
@@ -1352,7 +1480,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 3.69,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1362,18 +1490,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Jordan",
     region: "Middle East",
     bondName: "Jordan 10Y Bond",
     bondType: "eurobond",
-    currency: "JOD",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 7,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1383,18 +1513,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Iraq",
     region: "Middle East",
     bondName: "Iraq 10Y Bond",
     bondType: "eurobond",
-    currency: "IQD",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.6,
     bondPrice: 95.3,
-    yieldToMaturity: 5.75,
+    yieldToMaturity: 7.5,
     creditRating: "A+",
     debtToGdp: 82.4,
     fiscalDeficitToGdp: 3.4,
@@ -1404,7 +1536,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 420,
     goldReserves: 6.3,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "South Africa",
@@ -1415,7 +1549,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 8.74,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1425,7 +1559,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Nigeria",
@@ -1436,7 +1572,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 14.96,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1446,7 +1582,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Egypt",
@@ -1457,7 +1595,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 21,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1467,7 +1605,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Morocco",
@@ -1478,7 +1618,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 2.96,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1488,7 +1628,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Algeria",
@@ -1499,7 +1641,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 4.5,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1509,18 +1651,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Tunisia",
     region: "Africa",
     bondName: "Tunisia 10Y Bond",
     bondType: "eurobond",
-    currency: "TND",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 10,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1530,7 +1674,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Kenya",
@@ -1541,7 +1687,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 12.2,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1551,7 +1697,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: public source; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Tanzania",
@@ -1562,7 +1710,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 14,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1572,7 +1720,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Uganda",
@@ -1583,7 +1733,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 16,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1593,18 +1743,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: 估算/网络; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Angola",
     region: "Africa",
     bondName: "Angola 10Y Bond",
     bondType: "eurobond",
-    currency: "AOA",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 10,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1614,18 +1766,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Mozambique",
     region: "Africa",
     bondName: "Mozambique 10Y Bond",
     bondType: "eurobond",
-    currency: "MZN",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 11,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1635,18 +1789,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Senegal",
     region: "Africa",
     bondName: "Senegal 10Y Bond",
     bondType: "eurobond",
-    currency: "XOF",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 8,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1656,18 +1812,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Cameroon",
     region: "Africa",
     bondName: "Cameroon 10Y Bond",
     bondType: "eurobond",
-    currency: "XAF",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 9,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1677,7 +1835,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Botswana",
@@ -1688,7 +1848,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 5.5,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1698,7 +1858,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Namibia",
@@ -1709,7 +1871,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 10,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1719,7 +1881,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Mauritius",
@@ -1730,7 +1894,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 5,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1740,18 +1904,20 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Rwanda",
     region: "Africa",
     bondName: "Rwanda 10Y Bond",
     bondType: "eurobond",
-    currency: "RWF",
+    currency: "USD",
     maturity: "10Y",
     couponRate: 5.68,
     bondPrice: 95.2,
-    yieldToMaturity: 5.83,
+    yieldToMaturity: 9,
     creditRating: "A+",
     debtToGdp: 83.4,
     fiscalDeficitToGdp: 3.5,
@@ -1761,7 +1927,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 80,
     goldReserves: 1.2,
     cdsSpread: 71,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: USD bond.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Australia",
@@ -1772,7 +1940,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.36,
     bondPrice: 95.6,
-    yieldToMaturity: 5.51,
+    yieldToMaturity: 4.96,
     creditRating: "A+",
     debtToGdp: 79.9,
     fiscalDeficitToGdp: 3.3,
@@ -1782,7 +1950,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 30,
     goldReserves: 0.6,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "New Zealand",
@@ -1793,7 +1963,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.36,
     bondPrice: 95.6,
-    yieldToMaturity: 5.51,
+    yieldToMaturity: 4.63,
     creditRating: "A+",
     debtToGdp: 79.9,
     fiscalDeficitToGdp: 3.3,
@@ -1803,7 +1973,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 30,
     goldReserves: 0.6,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: screenshot; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Papua New Guinea",
@@ -1814,7 +1986,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.36,
     bondPrice: 95.6,
-    yieldToMaturity: 5.51,
+    yieldToMaturity: 9.5,
     creditRating: "A+",
     debtToGdp: 79.9,
     fiscalDeficitToGdp: 3.3,
@@ -1824,7 +1996,9 @@ export const sampleRecords = [
     foreignExchangeReserves: 30,
     goldReserves: 0.6,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   },
   {
     country: "Fiji",
@@ -1835,7 +2009,7 @@ export const sampleRecords = [
     maturity: "10Y",
     couponRate: 5.36,
     bondPrice: 95.6,
-    yieldToMaturity: 5.51,
+    yieldToMaturity: 5.5,
     creditRating: "A+",
     debtToGdp: 79.9,
     fiscalDeficitToGdp: 3.3,
@@ -1845,6 +2019,8 @@ export const sampleRecords = [
     foreignExchangeReserves: 30,
     goldReserves: 0.6,
     cdsSpread: 70,
-    liquidityBidAskSpread: 0.03
+    liquidityBidAskSpread: 0.03,
+    sourceNote: "10Y YTM from 2026-06-08 Excel workbook; source: estimate; yield basis: local currency.",
+    lastUpdated: "2026-06-08"
   }
 ];

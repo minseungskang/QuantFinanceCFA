@@ -5,6 +5,7 @@ const RECORDS_STORAGE_KEY = "sovereign-bond-records-v1";
 const RECORDS_META_STORAGE_KEY = "sovereign-bond-records-meta-v1";
 const PINNED_STORAGE_KEY = "sovereign-bond-pinned-v1";
 const HIDDEN_STORAGE_KEY = "sovereign-bond-hidden-v1";
+const DATASET_VERSION = "2026-06-09-excel-ytm-v1";
 const DEFAULT_BOND_TYPE = "localCurrency";
 const bondTypeLabels = {
   localCurrency: "Local Currency",
@@ -485,13 +486,16 @@ function loadRecords() {
     const storedRecords = JSON.parse(stored);
     if (!Array.isArray(storedRecords)) return cloneRecords(sampleRecords);
 
-    const merged = mergeLatestSampleRecords(storedRecords);
-    if (merged.addedCount > 0 || merged.removedCount > 0 || merged.classificationUpdateCount > 0) {
+    const recordsMeta = loadRecordsMeta();
+    const shouldRefreshSampleValues = recordsMeta?.datasetVersion !== DATASET_VERSION;
+    const merged = mergeLatestSampleRecords(storedRecords, { refreshSampleValues: shouldRefreshSampleValues });
+    if (merged.addedCount > 0 || merged.removedCount > 0 || merged.classificationUpdateCount > 0 || merged.sampleValueUpdateCount > 0) {
       persistRecords(merged.records);
       const changes = [];
       if (merged.addedCount > 0) changes.push(`${merged.addedCount} sample countries added`);
       if (merged.removedCount > 0) changes.push(`${merged.removedCount} retired sample countries removed`);
       if (merged.classificationUpdateCount > 0) changes.push(`${merged.classificationUpdateCount} bond type classifications updated`);
+      if (merged.sampleValueUpdateCount > 0) changes.push(`${merged.sampleValueUpdateCount} Excel YTM values updated`);
       initialSaveStatusMessage = changes.join("; ");
     }
 
@@ -512,10 +516,12 @@ function normalizeRecord(record) {
   };
 }
 
-function mergeLatestSampleRecords(storedRecords) {
+function mergeLatestSampleRecords(storedRecords, options = {}) {
+  const { refreshSampleValues = false } = options;
   const sampleByCountryKey = new Map(sampleRecords.map((record) => [normalizeCountryKey(record.country), normalizeRecord(record)]));
   const sampleCountryKeys = new Set(sampleByCountryKey.keys());
   let classificationUpdateCount = 0;
+  let sampleValueUpdateCount = 0;
   const retainedStoredRecords = storedRecords
     .filter((record) => sampleCountryKeys.has(normalizeCountryKey(record.country)))
     .map((record) => {
@@ -527,10 +533,22 @@ function mergeLatestSampleRecords(storedRecords) {
         classificationUpdateCount += 1;
       }
 
-      return {
+      const nextRecord = {
         ...normalizedRecord,
         bondType: sampleRecord.bondType
       };
+
+      if (refreshSampleValues) {
+        const sampleValueFields = ["currency", "yieldToMaturity", "sourceNote", "lastUpdated"];
+        const changed = sampleValueFields.some((field) => sampleRecord[field] !== undefined && nextRecord[field] !== sampleRecord[field]);
+        if (changed) sampleValueUpdateCount += 1;
+
+        sampleValueFields.forEach((field) => {
+          if (sampleRecord[field] !== undefined) nextRecord[field] = sampleRecord[field];
+        });
+      }
+
+      return nextRecord;
     });
   const existingCountries = new Set(retainedStoredRecords.map((record) => normalizeCountryKey(record.country)));
   const missingSampleRecords = sampleRecords.filter(
@@ -542,8 +560,18 @@ function mergeLatestSampleRecords(storedRecords) {
     addedCount: missingSampleRecords.length,
     classificationUpdateCount,
     removedCount,
+    sampleValueUpdateCount,
     records: [...cloneRecords(retainedStoredRecords), ...cloneRecords(missingSampleRecords)]
   };
+}
+
+function loadRecordsMeta() {
+  try {
+    const stored = window.localStorage.getItem(RECORDS_META_STORAGE_KEY);
+    return stored ? JSON.parse(stored) : null;
+  } catch {
+    return null;
+  }
 }
 
 function normalizeCountryKey(country) {
@@ -568,6 +596,7 @@ function persistRecords(nextRecords) {
     RECORDS_META_STORAGE_KEY,
     JSON.stringify({
       sampleCountryCount: sampleRecords.length,
+      datasetVersion: DATASET_VERSION,
       savedAt: new Date().toISOString()
     })
   );

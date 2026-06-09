@@ -112,11 +112,26 @@ for (const excludedCountry of [
   assert.equal(sampleRecords.some((record) => record.country === excludedCountry), false);
 }
 
-for (const country of ["China", "South Korea", "India", "Indonesia", "Thailand"]) {
+for (const [country, expectedYtm] of [
+  ["China", 1.73],
+  ["South Korea", 4.35],
+  ["India", 6.95],
+  ["Indonesia", 7.31],
+  ["Thailand", 2.31],
+  ["United States", 4.56],
+  ["Germany", 3.06]
+]) {
   const sample = sampleRecords.find((record) => record.country === country);
   assert.ok(sample, `${country} should exist in sample records`);
-  assert.equal(sample.yieldToMaturity, 5.61);
-  assert.equal(sample.creditRating, "A+");
+  assert.equal(sample.yieldToMaturity, expectedYtm);
+  assert.match(sample.sourceNote, /2026-06-08 Excel workbook/);
+}
+
+for (const country of ["Argentina", "Paraguay", "Ecuador"]) {
+  const sample = sampleRecords.find((record) => record.country === country);
+  assert.ok(sample, `${country} should exist in sample records`);
+  assert.equal(sample.currency, "USD");
+  assert.match(sample.sourceNote, /yield basis: USD bond/);
 }
 
 for (const record of scored) {

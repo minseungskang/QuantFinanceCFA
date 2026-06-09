@@ -93,6 +93,8 @@ Note: the table's Completeness value means the fields needed by the scoring mode
 
 The current demo country universe comes from the June 2026 103-country 10Y bond availability workbook. The default view shows 48 active local-currency 10Y sovereign bond records. The Eurobond view shows 40 external / weak-local-market records. Countries marked as no 10Y bond or default/restructuring are excluded from the visible ranking.
 
+The current `Yield to Maturity (%)` values come from the workbook's `10Y YTM(%)` column. Records marked as USD bond yields use `USD` as the displayed currency and include a source note in exports.
+
 ## Next Development Step
 
 The current preview includes the first scoring engine, browser-local manual editing, hide/restore, and CSV import/export. The next step is to expand production-grade persistence:
