@@ -26,7 +26,10 @@ const server = createServer(async (request, response) => {
     const filePath = resolvePath(request.url || "/");
     const body = await readFile(filePath);
     response.writeHead(200, {
-      "Content-Type": contentTypes[extname(filePath)] || "application/octet-stream"
+      "Content-Type": contentTypes[extname(filePath)] || "application/octet-stream",
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0"
     });
     response.end(body);
   } catch {
