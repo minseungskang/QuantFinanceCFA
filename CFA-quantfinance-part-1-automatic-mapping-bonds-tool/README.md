@@ -73,7 +73,8 @@ The preview includes:
 - Region filter
 - Sort control
 - Sample sovereign bond ranking table
-- Scores and confidence calculated by the shared scoring engine
+- Scores and completeness calculated by the shared scoring engine
+- Bond Type filter with `Local Currency`, `Eurobond`, and `All bond types` views
 - Expandable score details showing rating score, category scores, and component scores
 - Raw component values next to normalized model scores
 - Winsorized P95/P5 benchmarks showing which raw value maps to 100 and which maps to 0
@@ -89,6 +90,8 @@ The preview includes:
 - CSV headers include human-readable names and units, such as `Debt-to-GDP (%)` and `CDS Spread (bps)`
 
 Note: the table's Completeness value means the fields needed by the scoring model are present. It is not a guarantee that every sample value is market-source verified.
+
+The current demo country universe comes from the June 2026 103-country 10Y bond availability workbook. The default view shows 48 active local-currency 10Y sovereign bond records. The Eurobond view shows 40 external / weak-local-market records. Countries marked as no 10Y bond or default/restructuring are excluded from the visible ranking.
 
 ## Next Development Step
 

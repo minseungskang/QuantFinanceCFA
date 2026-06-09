@@ -2,7 +2,9 @@
 
 ## Product Goal
 
-Build a Mac/Windows desktop app that helps the user compare sovereign bonds using a transparent scoring table. The app should rank representative 10-year sovereign bonds across 100+ countries by risk-adjusted attractiveness, with support for local-currency bonds and Eurobonds.
+Build a Mac/Windows desktop app that helps the user compare sovereign bonds using a transparent scoring table. The app should rank a curated eligible universe of representative 10-year sovereign bonds by risk-adjusted attractiveness, with support for local-currency bonds and Eurobonds.
+
+The current demo universe is based on the June 2026 103-country bond-availability check workbook. The visible ranking excludes countries with no 10-year sovereign bond and countries marked as default/restructuring. The demo keeps 88 comparable records: 48 active local-currency 10-year bonds and 40 Eurobond / weak-local-market sovereign bond records.
 
 The app is a decision-support tool, not an investment adviser.
 
@@ -29,7 +31,7 @@ The interface should be English-first, simple, and table-centered.
 
 ## Data Fields
 
-Each country should have one representative 10-year sovereign bond record. The record should identify whether it is a local-currency sovereign bond or an external/foreign-currency Eurobond.
+Each eligible country should have one representative 10-year sovereign bond record. The record should identify whether it is a local-currency sovereign bond or an external/foreign-currency Eurobond.
 
 Required fields for v1:
 

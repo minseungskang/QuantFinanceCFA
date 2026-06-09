@@ -445,9 +445,12 @@ function loadRecords() {
     if (!Array.isArray(storedRecords)) return cloneRecords(sampleRecords);
 
     const merged = mergeLatestSampleRecords(storedRecords);
-    if (merged.addedCount > 0) {
+    if (merged.addedCount > 0 || merged.removedCount > 0) {
       persistRecords(merged.records);
-      initialSaveStatusMessage = `${merged.addedCount} sample countries added to local data`;
+      const changes = [];
+      if (merged.addedCount > 0) changes.push(`${merged.addedCount} sample countries added`);
+      if (merged.removedCount > 0) changes.push(`${merged.removedCount} retired sample countries removed`);
+      initialSaveStatusMessage = changes.join("; ");
     }
 
     return merged.records;
@@ -468,14 +471,18 @@ function normalizeRecord(record) {
 }
 
 function mergeLatestSampleRecords(storedRecords) {
-  const existingCountries = new Set(storedRecords.map((record) => normalizeCountryKey(record.country)));
+  const sampleCountryKeys = new Set(sampleRecords.map((record) => normalizeCountryKey(record.country)));
+  const retainedStoredRecords = storedRecords.filter((record) => sampleCountryKeys.has(normalizeCountryKey(record.country)));
+  const existingCountries = new Set(retainedStoredRecords.map((record) => normalizeCountryKey(record.country)));
   const missingSampleRecords = sampleRecords.filter(
     (record) => !existingCountries.has(normalizeCountryKey(record.country))
   );
+  const removedCount = storedRecords.length - retainedStoredRecords.length;
 
   return {
     addedCount: missingSampleRecords.length,
-    records: [...cloneRecords(storedRecords), ...cloneRecords(missingSampleRecords)]
+    removedCount,
+    records: [...cloneRecords(retainedStoredRecords), ...cloneRecords(missingSampleRecords)]
   };
 }
 

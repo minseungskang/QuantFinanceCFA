@@ -88,7 +88,29 @@ assert.deepEqual(
   ]
 );
 assert.equal(scored.length, fixtureRecords.length);
-assert.ok(sampleRecords.length >= 100);
+assert.equal(sampleRecords.length, 88);
+assert.equal(sampleRecords.filter((record) => record.bondType === "localCurrency").length, 48);
+assert.equal(sampleRecords.filter((record) => record.bondType === "eurobond").length, 40);
+
+for (const excludedCountry of [
+  "Venezuela",
+  "Sri Lanka",
+  "Lebanon",
+  "Ethiopia",
+  "Ghana",
+  "Zambia",
+  "Zimbabwe",
+  "Madagascar",
+  "Burundi",
+  "Solomon Islands",
+  "Vanuatu",
+  "Samoa",
+  "Tonga",
+  "Kiribati",
+  "Marshall Islands"
+]) {
+  assert.equal(sampleRecords.some((record) => record.country === excludedCountry), false);
+}
 
 for (const country of ["China", "South Korea", "India", "Indonesia", "Thailand"]) {
   const sample = sampleRecords.find((record) => record.country === country);

@@ -151,7 +151,7 @@ Missing fields must not automatically score as zero.
 
 If a country is missing one or more indicators, recalculate the score using the available indicator weights within the relevant category.
 
-Show a Data Confidence value that reflects how much of the model's total weight had usable data.
+Show a Data Completeness value that reflects how much of the model's total weight had usable data.
 
 ## Weight Editing
 
